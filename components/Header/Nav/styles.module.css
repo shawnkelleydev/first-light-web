@@ -14,13 +14,8 @@
   margin: auto;
 }
 
-.nav .active {
-  background: var(--color-accent);
-}
-
 @media (max-width: 768px) {
   .nav {
-    background: var(--color-primary);
     bottom: 0;
     height: 44px;
     left: 0;
@@ -31,6 +26,6 @@
 
 @media (min-width: 1024px) {
   .nav a:hover {
-    background: var(--color-accent);
+    background: tomato;
   }
 }

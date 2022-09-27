@@ -7,13 +7,6 @@
   padding: 0;
 }
 
-:root {
-  /* TODO: Set Theme Colors */
-  --color-primary: #111;
-  --color-secondary: #eee;
-  --color-accent: rgb(144, 103, 26);
-}
-
 h1 {
   margin: 0;
 }

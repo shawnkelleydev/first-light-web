@@ -3,8 +3,8 @@
   --active-color: #fff;
   --active-background-color: none;
   --background: none;
-  --text-color: var(--color-primary);
-  --hover-color: var(--color-accent);
+  --text-color: #fff;
+  --hover-color: aqua;
   --hover-background-color: none;
   background: var(--background);
   color: var(--text-color);
