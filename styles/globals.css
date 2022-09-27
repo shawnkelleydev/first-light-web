@@ -6,6 +6,11 @@
   padding: 0;
 }
 
+:root {
+  --hover-color: rgb(34, 32, 115);
+  --active-color: rgb(25, 23, 84);
+}
+
 h1 {
   margin: 0;
 }

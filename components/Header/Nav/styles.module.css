@@ -20,21 +20,20 @@
 }
 
 .active span {
-  background: rgb(25, 23, 84);
+  background: var(--active-color);
+}
+
+.nav a:hover span {
+  background: var(--hover-color);
 }
 
 @media (max-width: 768px) {
   .nav {
+    background: #333;
     bottom: 0;
     height: 44px;
     left: 0;
     position: fixed;
     right: 0;
-  }
-}
-
-@media (min-width: 1024px) {
-  .nav a:hover span {
-    background: rgb(34, 32, 115);
   }
 }

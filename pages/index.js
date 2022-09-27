@@ -1,9 +1,9 @@
-import styles from './styles.module.css'
+import Verse from 'components/Verse'
 
 export default function Home() {
   return (
-    <div className={styles.home}>
-      <h2>home</h2>
-    </div>
+    <>
+      <Verse />
+    </>
   )
 }

@@ -10,10 +10,10 @@ export default function Nav() {
 
   return (
     <nav className={styles.nav}>
-      {pages.map((page, i) => (
+      {pages.map((page, idx) => (
         <Link
           href={`/${page.toLowerCase()}`}
-          key={i}
+          key={idx}
         >
           <a className={page === route ? styles.active : null}>
             <span>{page}</span>

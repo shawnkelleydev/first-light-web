@@ -8,7 +8,11 @@ export default function Logo() {
     <div className={styles.logo}>
       <h1>
         <Link href='/'>
-          <a>{meta.TITLE}</a>
+          <a>
+            {meta.TITLE.split(' ').map((word, idx) => (
+              <span key={idx}>{word}</span>
+            ))}
+          </a>
         </Link>
       </h1>
     </div>
