@@ -1,5 +1,5 @@
 // throws async errors with aliasing
-import { meta } from 'utils/constants/data'
+import { meta } from 'utils/constants'
 
 import styles from './styles.module.css'
 
