@@ -15,7 +15,7 @@ export default function Nav() {
           href={`/${page.toLowerCase()}`}
           key={i}
         >
-          <a className={page === route ? styles.active : ''}>
+          <a className={page === route ? styles.active : null}>
             <span>{page}</span>
           </a>
         </Link>

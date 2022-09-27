@@ -1,9 +1,9 @@
 import styles from './styles.module.css'
 
-export default function Page1() {
+export default function Bible() {
   return (
-    <div className={styles.page1}>
-      <h2>Page 1</h2>
+    <div className={styles.bible}>
+      <h2>bible</h2>
     </div>
   )
 }

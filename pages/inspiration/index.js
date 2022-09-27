@@ -1,9 +1,9 @@
 import styles from './styles.module.css'
 
-export default function Page3() {
+export default function Inspiration() {
   return (
-    <div className={styles.page3}>
-      <h2>Page3</h2>
+    <div className={styles.inspiration}>
+      <h2>inspiration</h2>
     </div>
   )
 }

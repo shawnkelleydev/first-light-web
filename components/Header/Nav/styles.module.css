@@ -14,6 +14,10 @@
   margin: auto;
 }
 
+.active {
+  background: tomato;
+}
+
 @media (max-width: 768px) {
   .nav {
     bottom: 0;

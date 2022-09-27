@@ -1,9 +1,9 @@
 import styles from './styles.module.css'
 
-export default function Page2() {
+export default function Space() {
   return (
-    <div className={styles.page2}>
-      <h2>Page2</h2>
+    <div className={styles.space}>
+      <h2>space</h2>
     </div>
   )
 }
