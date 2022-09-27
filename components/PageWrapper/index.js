@@ -5,12 +5,12 @@ import PageContent from 'components/PageContent'
 
 import styles from './styles.module.css'
 
-export default function PageWrapper({ children }) {
+export default function PageWrapper({ backgroundImage, children }) {
   return (
     <div className={styles['page-wrapper']}>
       <Head />
       <Header />
-      <PageContent>{children}</PageContent>
+      <PageContent backgroundImage={backgroundImage}>{children}</PageContent>
       <Footer />
     </div>
   )

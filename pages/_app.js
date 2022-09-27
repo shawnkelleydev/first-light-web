@@ -4,11 +4,7 @@ import 'normalize.css'
 import 'styles/globals.css'
 
 function MyApp({ Component, pageProps }) {
-  return (
-    <PageWrapper>
-      <Component {...pageProps} />
-    </PageWrapper>
-  )
+  return <Component {...pageProps} />
 }
 
 export default MyApp

@@ -9,7 +9,6 @@ export default function Verse() {
   const [getNextVerse, state] = useVerseData()
   const { verse } = state
 
-  console.log(state)
   if (!state.verse) return null
 
   return (
