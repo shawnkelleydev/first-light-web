@@ -6,14 +6,11 @@ import styles from './styles.module.css'
 export default function Logo() {
   return (
     <div className={styles.logo}>
-      <Link href='/'>
-        <a>
-          <h1>
-            <b>{meta.TITLE}</b>
-            {/* TODO: optional <small>{meta.TAG}</small> */}
-          </h1>
-        </a>
-      </Link>
+      <h1>
+        <Link href='/'>
+          <a>{meta.TITLE}</a>
+        </Link>
+      </h1>
     </div>
   )
 }

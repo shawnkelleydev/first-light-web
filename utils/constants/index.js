@@ -3,18 +3,13 @@ const getYear = (epoc) => {
 }
 
 export const meta = {
-  // TODO: edit AUTHOR
-  AUTHOR: 'author',
+  AUTHOR: 'Shawn Kelley',
   CURRENT_YEAR: getYear(new Date()),
   // TODO: edit DESCRIPTION
-  DESCRIPTION: 'description',
+  DESCRIPTION: 'A Personal Daily Devotional Application',
   // TODO: edit KEYWORDS
-  KEYWORDS: 'keyword1, keyword2, keyword3',
-  // TODO: edit/remove TAG
-  TAG: 'tag',
-  // TODO: edit TITLE
-  TITLE: 'title',
+  KEYWORDS: 'shawn, kelley, first, light',
+  TITLE: 'First Light',
 }
 
-// TODO: edit pages && change page folder names to match
-export const pages = ['page1', 'page2', 'page3']
+export const pages = ['bible', 'space', 'inspiration']
