@@ -1,4 +1,6 @@
 .page-content {
+  background: url('https://media.wbur.org/wp/2022/07/GettyImages-1241857240-RESIZED-1000x579.jpg') no-repeat;
+  background-position: center;
   display: flex;
   flex: 1;
 }

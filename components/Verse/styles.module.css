@@ -1,11 +1,19 @@
 .verse {
   align-items: center;
+  background: #000000b8;
+  border-radius: 8px;
+  box-shadow: 0 .5px 0 1px #4646467a;
+  backdrop-filter: blur(24px);
   display: flex;
   flex-direction: column;
   gap: 1em;
   margin: auto;
   max-width: min(80vw, 400px);
+  overflow: hidden;
+  padding: 24px;
+  position: relative;
   text-align: center;
+  z-index: 1;
 }
 
 .verse > div {
@@ -14,15 +22,15 @@
 }
 
 .verse button {
-  background: var(--active-color);
-  border: none;
+  background: none;
+  border: 1px solid #888;
   border-radius: 4px;
   color: #fff;
   padding: 8px;
   transition: .1s ease-out;
 }
 
-.verse button:hover span {
+.verse button:hover {
   background: var(--hover-color);
 }
 
