@@ -1,7 +1,6 @@
 [
   {
     "id": "GEN",
-    "bibleId": "a761ca71e0b3ddcf-01",
     "abbreviation": "Gen",
     "name": "Genesis",
     "nameLong": "Genesis",
@@ -10,7 +9,6 @@
   },
   {
     "id": "EXO",
-    "bibleId": "a761ca71e0b3ddcf-01",
     "abbreviation": "Ex",
     "name": "Exodus",
     "nameLong": "Exodus",
@@ -19,7 +17,6 @@
   },
   {
     "id": "LEV",
-    "bibleId": "a761ca71e0b3ddcf-01",
     "abbreviation": "Lev",
     "name": "Leviticus",
     "nameLong": "Leviticus",
@@ -28,7 +25,6 @@
   },
   {
     "id": "NUM",
-    "bibleId": "a761ca71e0b3ddcf-01",
     "abbreviation": "Num",
     "name": "Numbers",
     "nameLong": "Numbers",
@@ -37,7 +33,6 @@
   },
   {
     "id": "DEU",
-    "bibleId": "a761ca71e0b3ddcf-01",
     "abbreviation": "Deut",
     "name": "Deuteronomy",
     "nameLong": "Deuteronomy",
@@ -46,7 +41,6 @@
   },
   {
     "id": "JOS",
-    "bibleId": "a761ca71e0b3ddcf-01",
     "abbreviation": "Josh",
     "name": "Joshua",
     "nameLong": "Joshua",
@@ -55,7 +49,6 @@
   },
   {
     "id": "JDG",
-    "bibleId": "a761ca71e0b3ddcf-01",
     "abbreviation": "Judg",
     "name": "Judges",
     "nameLong": "Judges",
@@ -64,7 +57,6 @@
   },
   {
     "id": "RUT",
-    "bibleId": "a761ca71e0b3ddcf-01",
     "abbreviation": "Ruth",
     "name": "Ruth",
     "nameLong": "Ruth",
@@ -73,7 +65,6 @@
   },
   {
     "id": "1SA",
-    "bibleId": "a761ca71e0b3ddcf-01",
     "abbreviation": "1 Sam",
     "name": "1 Samuel",
     "nameLong": "1 Samuel",
@@ -82,7 +73,6 @@
   },
   {
     "id": "2SA",
-    "bibleId": "a761ca71e0b3ddcf-01",
     "abbreviation": "2 Sam",
     "name": "2 Samuel",
     "nameLong": "2 Samuel",
@@ -91,7 +81,6 @@
   },
   {
     "id": "1KI",
-    "bibleId": "a761ca71e0b3ddcf-01",
     "abbreviation": "1 Kin",
     "name": "1 Kings",
     "nameLong": "1 Kings",
@@ -100,7 +89,6 @@
   },
   {
     "id": "2KI",
-    "bibleId": "a761ca71e0b3ddcf-01",
     "abbreviation": "2 Kin",
     "name": "2 Kings",
     "nameLong": "2 Kings",
@@ -109,7 +97,6 @@
   },
   {
     "id": "1CH",
-    "bibleId": "a761ca71e0b3ddcf-01",
     "abbreviation": "1 Chr",
     "name": "1 Chronicles",
     "nameLong": "1 Chronicles",
@@ -118,7 +105,6 @@
   },
   {
     "id": "2CH",
-    "bibleId": "a761ca71e0b3ddcf-01",
     "abbreviation": "2 Chr",
     "name": "2 Chronicles",
     "nameLong": "2 Chronicles",
@@ -127,7 +113,6 @@
   },
   {
     "id": "EZR",
-    "bibleId": "a761ca71e0b3ddcf-01",
     "abbreviation": "Ezra",
     "name": "Ezra",
     "nameLong": "Ezra",
@@ -136,7 +121,6 @@
   },
   {
     "id": "NEH",
-    "bibleId": "a761ca71e0b3ddcf-01",
     "abbreviation": "Neh",
     "name": "Nehemiah",
     "nameLong": "Nehemiah",
@@ -145,7 +129,6 @@
   },
   {
     "id": "EST",
-    "bibleId": "a761ca71e0b3ddcf-01",
     "abbreviation": "Esth",
     "name": "Esther",
     "nameLong": "Esther",
@@ -154,7 +137,6 @@
   },
   {
     "id": "JOB",
-    "bibleId": "a761ca71e0b3ddcf-01",
     "abbreviation": "Job",
     "name": "Job",
     "nameLong": "Job",
@@ -163,7 +145,6 @@
   },
   {
     "id": "PSA",
-    "bibleId": "a761ca71e0b3ddcf-01",
     "abbreviation": "Ps",
     "name": "Psalms",
     "nameLong": "Psalms",
@@ -172,7 +153,6 @@
   },
   {
     "id": "PRO",
-    "bibleId": "a761ca71e0b3ddcf-01",
     "abbreviation": "Prov",
     "name": "Proverbs",
     "nameLong": "Proverbs",
@@ -181,7 +161,6 @@
   },
   {
     "id": "ECC",
-    "bibleId": "a761ca71e0b3ddcf-01",
     "abbreviation": "Eccl",
     "name": "Ecclesiastes",
     "nameLong": "Ecclesiates",
@@ -190,7 +169,6 @@
   },
   {
     "id": "SNG",
-    "bibleId": "a761ca71e0b3ddcf-01",
     "abbreviation": "Song",
     "name": "Song of Solomon",
     "nameLong": "Song of Solomon",
@@ -199,7 +177,6 @@
   },
   {
     "id": "ISA",
-    "bibleId": "a761ca71e0b3ddcf-01",
     "abbreviation": "Is",
     "name": "Isaiah",
     "nameLong": "Isaiah",
@@ -208,7 +185,6 @@
   },
   {
     "id": "JER",
-    "bibleId": "a761ca71e0b3ddcf-01",
     "abbreviation": "Jer",
     "name": "Jeremiah",
     "nameLong": "Jeremiah",
@@ -217,7 +193,6 @@
   },
   {
     "id": "LAM",
-    "bibleId": "a761ca71e0b3ddcf-01",
     "abbreviation": "Lam",
     "name": "Lamentations",
     "nameLong": "Lamentations",
@@ -226,7 +201,6 @@
   },
   {
     "id": "EZK",
-    "bibleId": "a761ca71e0b3ddcf-01",
     "abbreviation": "Ezek",
     "name": "Ezekiel",
     "nameLong": "Ezekiel",
@@ -235,7 +209,6 @@
   },
   {
     "id": "DAN",
-    "bibleId": "a761ca71e0b3ddcf-01",
     "abbreviation": "Dan",
     "name": "Daniel",
     "nameLong": "Daniel",
@@ -244,7 +217,6 @@
   },
   {
     "id": "HOS",
-    "bibleId": "a761ca71e0b3ddcf-01",
     "abbreviation": "Hos",
     "name": "Hosea",
     "nameLong": "Hosea",
@@ -253,7 +225,6 @@
   },
   {
     "id": "JOL",
-    "bibleId": "a761ca71e0b3ddcf-01",
     "abbreviation": "Joel",
     "name": "Joel",
     "nameLong": "Joel",
@@ -262,7 +233,6 @@
   },
   {
     "id": "AMO",
-    "bibleId": "a761ca71e0b3ddcf-01",
     "abbreviation": "Amos",
     "name": "Amos",
     "nameLong": "Amos",
@@ -271,7 +241,6 @@
   },
   {
     "id": "OBA",
-    "bibleId": "a761ca71e0b3ddcf-01",
     "abbreviation": "Obad",
     "name": "Obadiah",
     "nameLong": "Obadiah",
@@ -280,7 +249,6 @@
   },
   {
     "id": "JON",
-    "bibleId": "a761ca71e0b3ddcf-01",
     "abbreviation": "Jon",
     "name": "Jonah",
     "nameLong": "Jonah",
@@ -289,7 +257,6 @@
   },
   {
     "id": "MIC",
-    "bibleId": "a761ca71e0b3ddcf-01",
     "abbreviation": "Mic",
     "name": "Micah",
     "nameLong": "Micah",
@@ -298,7 +265,6 @@
   },
   {
     "id": "NAM",
-    "bibleId": "a761ca71e0b3ddcf-01",
     "abbreviation": "Nah",
     "name": "Nahum",
     "nameLong": "Nahum",
@@ -307,7 +273,6 @@
   },
   {
     "id": "HAB",
-    "bibleId": "a761ca71e0b3ddcf-01",
     "abbreviation": "Hab",
     "name": "Habakkuk",
     "nameLong": "Habakkuk",
@@ -316,7 +281,6 @@
   },
   {
     "id": "ZEP",
-    "bibleId": "a761ca71e0b3ddcf-01",
     "abbreviation": "Zeph",
     "name": "Zephaniah",
     "nameLong": "Zephaniah",
@@ -325,7 +289,6 @@
   },
   {
     "id": "HAG",
-    "bibleId": "a761ca71e0b3ddcf-01",
     "abbreviation": "Hag",
     "name": "Haggai",
     "nameLong": "Haggai",
@@ -334,7 +297,6 @@
   },
   {
     "id": "ZEC",
-    "bibleId": "a761ca71e0b3ddcf-01",
     "abbreviation": "Zech",
     "name": "Zechariah",
     "nameLong": "Zechariah",
@@ -343,7 +305,6 @@
   },
   {
     "id": "MAL",
-    "bibleId": "a761ca71e0b3ddcf-01",
     "abbreviation": "Mal",
     "name": "Malachi",
     "nameLong": "Malachi",
@@ -352,7 +313,6 @@
   },
   {
     "id": "MAT",
-    "bibleId": "a761ca71e0b3ddcf-01",
     "abbreviation": "Matt",
     "name": "Matthew",
     "nameLong": "Matthew",
@@ -361,7 +321,6 @@
   },
   {
     "id": "MRK",
-    "bibleId": "a761ca71e0b3ddcf-01",
     "abbreviation": "Mark",
     "name": "Mark",
     "nameLong": "Mark",
@@ -370,7 +329,6 @@
   },
   {
     "id": "LUK",
-    "bibleId": "a761ca71e0b3ddcf-01",
     "abbreviation": "Luke",
     "name": "Luke",
     "nameLong": "Luke",
@@ -379,7 +337,6 @@
   },
   {
     "id": "JHN",
-    "bibleId": "a761ca71e0b3ddcf-01",
     "abbreviation": "John",
     "name": "John",
     "nameLong": "John",
@@ -388,7 +345,6 @@
   },
   {
     "id": "ACT",
-    "bibleId": "a761ca71e0b3ddcf-01",
     "abbreviation": "Act",
     "name": "Acts",
     "nameLong": "Acts",
@@ -397,7 +353,6 @@
   },
   {
     "id": "ROM",
-    "bibleId": "a761ca71e0b3ddcf-01",
     "abbreviation": "Rom",
     "name": "Romans",
     "nameLong": "Romans",
@@ -406,7 +361,6 @@
   },
   {
     "id": "1CO",
-    "bibleId": "a761ca71e0b3ddcf-01",
     "abbreviation": "1 Cor",
     "name": "1 Corinthians",
     "nameLong": "1 Corinthians",
@@ -415,7 +369,6 @@
   },
   {
     "id": "2CO",
-    "bibleId": "a761ca71e0b3ddcf-01",
     "abbreviation": "2 Cor",
     "name": "2 Corinthians",
     "nameLong": "2 Corinthians",
@@ -424,7 +377,6 @@
   },
   {
     "id": "GAL",
-    "bibleId": "a761ca71e0b3ddcf-01",
     "abbreviation": "Gal",
     "name": "Galatians",
     "nameLong": "Galatians",
@@ -433,7 +385,6 @@
   },
   {
     "id": "EPH",
-    "bibleId": "a761ca71e0b3ddcf-01",
     "abbreviation": "Eph",
     "name": "Ephesians",
     "nameLong": "Ephesians",
@@ -442,7 +393,6 @@
   },
   {
     "id": "PHP",
-    "bibleId": "a761ca71e0b3ddcf-01",
     "abbreviation": "Phil",
     "name": "Philippians",
     "nameLong": "Philippians",
@@ -451,7 +401,6 @@
   },
   {
     "id": "COL",
-    "bibleId": "a761ca71e0b3ddcf-01",
     "abbreviation": "Col",
     "name": "Colossians",
     "nameLong": "Colossians",
@@ -460,7 +409,6 @@
   },
   {
     "id": "1TH",
-    "bibleId": "a761ca71e0b3ddcf-01",
     "abbreviation": "1 Thess",
     "name": "1 Thessalonians",
     "nameLong": "1 Thessalonians",
@@ -469,7 +417,6 @@
   },
   {
     "id": "2TH",
-    "bibleId": "a761ca71e0b3ddcf-01",
     "abbreviation": "2 Thess",
     "name": "2 Thessalonians",
     "nameLong": "2 Thessalonians",
@@ -478,7 +425,6 @@
   },
   {
     "id": "1TI",
-    "bibleId": "a761ca71e0b3ddcf-01",
     "abbreviation": "1 Tim",
     "name": "1 Timothy",
     "nameLong": "1 Timothy",
@@ -487,7 +433,6 @@
   },
   {
     "id": "2TI",
-    "bibleId": "a761ca71e0b3ddcf-01",
     "abbreviation": "2 Tim",
     "name": "2 Timothy",
     "nameLong": "2 Timothy",
@@ -496,7 +441,6 @@
   },
   {
     "id": "TIT",
-    "bibleId": "a761ca71e0b3ddcf-01",
     "abbreviation": "Titus",
     "name": "Titus",
     "nameLong": "Titus",
@@ -505,7 +449,6 @@
   },
   {
     "id": "PHM",
-    "bibleId": "a761ca71e0b3ddcf-01",
     "abbreviation": "Philem",
     "name": "Philemon",
     "nameLong": "Philemon",
@@ -514,7 +457,6 @@
   },
   {
     "id": "HEB",
-    "bibleId": "a761ca71e0b3ddcf-01",
     "abbreviation": "Heb",
     "name": "Hebrews",
     "nameLong": "Hebrews",
@@ -523,7 +465,6 @@
   },
   {
     "id": "JAS",
-    "bibleId": "a761ca71e0b3ddcf-01",
     "abbreviation": "James",
     "name": "James",
     "nameLong": "James",
@@ -532,7 +473,6 @@
   },
   {
     "id": "1PE",
-    "bibleId": "a761ca71e0b3ddcf-01",
     "abbreviation": "1 Pet",
     "name": "1 Peter",
     "nameLong": "1 Peter",
@@ -541,7 +481,6 @@
   },
   {
     "id": "2PE",
-    "bibleId": "a761ca71e0b3ddcf-01",
     "abbreviation": "2 Pet",
     "name": "2 Peter",
     "nameLong": "Second Peter",
@@ -550,7 +489,6 @@
   },
   {
     "id": "1JN",
-    "bibleId": "a761ca71e0b3ddcf-01",
     "abbreviation": "1 John",
     "name": "1 John",
     "nameLong": "1 John",
@@ -559,7 +497,6 @@
   },
   {
     "id": "2JN",
-    "bibleId": "a761ca71e0b3ddcf-01",
     "abbreviation": "2 John",
     "name": "2 John",
     "nameLong": "2 John",
@@ -568,7 +505,6 @@
   },
   {
     "id": "3JN",
-    "bibleId": "a761ca71e0b3ddcf-01",
     "abbreviation": "3 John",
     "name": "3 John",
     "nameLong": "3 John",
@@ -577,7 +513,6 @@
   },
   {
     "id": "JUD",
-    "bibleId": "a761ca71e0b3ddcf-01",
     "abbreviation": "Jude",
     "name": "Jude",
     "nameLong": "Jude",
@@ -586,7 +521,6 @@
   },
   {
     "id": "REV",
-    "bibleId": "a761ca71e0b3ddcf-01",
     "abbreviation": "Rev",
     "name": "Revelation",
     "nameLong": "Revelation",
