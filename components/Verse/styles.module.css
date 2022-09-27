@@ -34,11 +34,8 @@
   background: var(--hover-color);
 }
 
-.verse p[class='s'] {
-  color: #888;
-  font-size: .8em;
-  margin: 0 0 1em;
-  text-transform: uppercase;
+.verse p[class='s'], .verse p[class='ms'] {
+  display: none;
 }
 
 .verse span[class='v'] {
