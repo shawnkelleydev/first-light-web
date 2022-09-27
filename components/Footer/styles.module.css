@@ -1,5 +1,6 @@
 .footer {
   display: flex;
+  margin: 0 -8px -8px;
   padding: 8px;
 }
 

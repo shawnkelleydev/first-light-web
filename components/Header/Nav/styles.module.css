@@ -11,11 +11,16 @@
 }
 
 .nav span {
-  margin: auto;
+  align-items: center;
+  border-radius: 4px;
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  transition: .1s ease-out;
 }
 
-.active {
-  background: tomato;
+.active span {
+  background: rgb(25, 23, 84);
 }
 
 @media (max-width: 768px) {
@@ -29,7 +34,7 @@
 }
 
 @media (min-width: 1024px) {
-  .nav a:hover {
-    background: tomato;
+  .nav a:hover span {
+    background: rgb(34, 32, 115);
   }
 }
