@@ -5,7 +5,7 @@ export default function useAuthData() {
   const initialState = {
     error: '',
     input: '',
-    isAuthorized: false,
+    isAuthorized: true,
   }
 
   const reducer = (state, action) => {

@@ -30,10 +30,6 @@
   transition: .1s ease-out;
 }
 
-.verse button:hover {
-  background: var(--hover-color);
-}
-
 .verse p[class='s'], .verse p[class='ms'] {
   display: none;
 }

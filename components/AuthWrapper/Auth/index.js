@@ -11,6 +11,7 @@ export default function Auth({ error, input, onChange, onSubmit }) {
             type='number'
             value={input}
             onChange={onChange}
+            pattern='\d*'
           />
         </label>
         <button type='submit'>submit</button>
