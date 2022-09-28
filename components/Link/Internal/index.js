@@ -7,7 +7,7 @@ export default function External({ styles, text, url }) {
   const checkForMatch = () => {
     let match = false
     const words = text.replace(/[?.!]/g, '').split(' ')
-    words.forEach((word) => (route.includes(word) ? (match = true) : null))
+    words.forEach(word => (route.includes(word) ? (match = true) : null))
     if (text === 'home' && route === '/') match = true
     return match
   }

@@ -9,6 +9,21 @@
   width: 100vw;
 }
 
+.auth form, .auth label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px
+}
+
 .auth input {
-  margin: 0 0 0 8px;
+  height: 44px;
+  padding: 0 4px;
+  text-align: center;
+}
+
+.auth button { height: 44px; }
+
+.auth span {
+  color: #ff6d6d;
+  text-align: center;
 }

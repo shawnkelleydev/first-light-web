@@ -5,7 +5,7 @@ export default function Auth({ error, input, onChange, onSubmit }) {
     <div className={styles.auth}>
       <form onSubmit={onSubmit}>
         <label htmlFor='code'>
-          <span>code</span>
+          code
           <input
             id='code'
             type='number'
@@ -14,8 +14,8 @@ export default function Auth({ error, input, onChange, onSubmit }) {
           />
         </label>
         <button type='submit'>submit</button>
+        <span>{error}</span>
       </form>
-      <span>{error}</span>
     </div>
   )
 }
