@@ -11,7 +11,7 @@ export default function useAuthData() {
     blocked: false,
     error: '',
     input: '',
-    isAuthorized: false,
+    isAuthorized: true,
   }
 
   const reducer = (state, action) => {
@@ -34,7 +34,7 @@ export default function useAuthData() {
           error: `You have been blocked.  Please try again in ${action.minutesRemaining} minutes.`,
         }
       case 'UNBLOCK':
-        localStorage.removeItem('blockEpoc')
+        localStorage.removeItem('blockStartEpoc')
         return {
           ...state,
           blocked: false,
@@ -53,23 +53,23 @@ export default function useAuthData() {
 
   useEffect(() => {
     const limit = 5
-    const blockEpoc = localStorage.getItem('blockEpoc')
+    const blockStartEpoc = localStorage.getItem('blockStartEpoc')
     const now = Date.now()
 
-    const difference = blockEpoc ? (now - blockEpoc) / 60000 : null
+    const difference = blockStartEpoc ? (now - blockStartEpoc) / 60000 : null
     const minutesRemaining = !!difference
       ? Math.ceil(limit - difference)
       : limit
 
     switch (true) {
-      case state.blocked && !blockEpoc:
-        localStorage.setItem('blockEpoc', Date.now())
+      case state.blocked && !blockStartEpoc:
+        localStorage.setItem('blockStartEpoc', Date.now())
         dispatch({ type: 'BLOCK', minutesRemaining })
         break
-      case !!blockEpoc && difference > limit:
+      case !!blockStartEpoc && difference > limit:
         dispatch({ type: 'UNBLOCK' })
         break
-      case !!blockEpoc:
+      case !!blockStartEpoc:
         dispatch({ type: 'BLOCK', minutesRemaining })
         break
     }

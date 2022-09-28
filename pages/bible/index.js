@@ -1,13 +1,12 @@
 import PageWrapper from 'components/PageWrapper'
-
-import styles from './styles.module.css'
+import BibleReader from 'components/BibleReader'
+import { NodeNextRequest } from 'next/dist/server/base-http/node'
 
 export default function Bible() {
   return (
     <PageWrapper>
-      <div className={styles.bible}>
-        <h2>bible</h2>
-      </div>
+      <h2 style={{ display: 'none' }}>Bible</h2>
+      <BibleReader />
     </PageWrapper>
   )
 }
