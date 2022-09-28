@@ -1,11 +1,13 @@
-import { useReducer } from 'react'
+import { useEffect, useReducer } from 'react'
 import { authenticate } from 'services/auth'
 
 export default function useAuthData() {
   const initialState = {
+    attempts: 0,
+    blocked: false,
     error: '',
     input: '',
-    isAuthorized: true,
+    isAuthorized: false,
   }
 
   const reducer = (state, action) => {
@@ -15,7 +17,24 @@ export default function useAuthData() {
       case 'AUTHORIZE':
         return { ...initialState, isAuthorized: true }
       case 'SET_ERROR':
-        return { ...initialState, error: action.error }
+        return {
+          ...state,
+          attempts: state.attempts + 1,
+          error: action.error,
+          input: '',
+        }
+      case 'BLOCK':
+        return {
+          ...state,
+          blocked: true,
+          error: `You have been blocked.  Please try again in ${action.minutesRemaining} minutes.`,
+        }
+      case 'UNBLOCK':
+        return {
+          ...state,
+          blocked: false,
+          error: '',
+        }
       default:
         return { ...initialState, error: 'Oops...Something went wrong.' }
     }
@@ -23,15 +42,56 @@ export default function useAuthData() {
 
   const [state, dispatch] = useReducer(reducer, initialState)
 
+  useEffect(() => {
+    const limit = 5
+    const blockEpoc = localStorage.getItem('blockEpoc')
+    const now = Date.now()
+
+    const difference = blockEpoc ? (now - blockEpoc) / 60000 : null
+    const minutesRemaining = !!difference
+      ? Math.ceil(limit - difference)
+      : limit
+
+    switch (true) {
+      case state.blocked && !blockEpoc:
+        localStorage.setItem('blockEpoc', Date.now())
+        dispatch({ type: 'BLOCK', minutesRemaining })
+        break
+      case !!blockEpoc && difference > limit:
+        localStorage.removeItem('blockEpoc')
+        dispatch({ type: 'UNBLOCK' })
+        break
+      case !!blockEpoc:
+        dispatch({ type: 'BLOCK', minutesRemaining })
+        break
+    }
+  }, [state.blocked])
+
   const handleSubmit = async e => {
     e.preventDefault()
+    let status = null
 
-    if (state.input.length > 0) {
-      const status = await authenticate(state.input)
+    if (!!state.input.length && !state.blocked) {
+      status = await authenticate(state.input)
+    }
 
-      if (status === 200) dispatch({ type: 'AUTHORIZE' })
-      else dispatch({ type: 'SET_ERROR', error: 'Wrong code.' })
-    } else dispatch({ type: 'SET_ERROR', error: 'Please provide input.' })
+    switch (true) {
+      case !!state.error.length && state.attempts > 5:
+        dispatch({ type: 'BLOCK' })
+        break
+      case !!state.error.length && state.attempts > 3:
+        dispatch({ type: 'SET_ERROR', error: 'Prepare to be blocked...' })
+        break
+      case !state.input.length:
+        dispatch({ type: 'SET_ERROR', error: 'Please provide input' })
+        break
+      case status === 200:
+        dispatch({ type: 'AUTHORIZE' })
+        break
+      default:
+        dispatch({ type: 'SET_ERROR', error: 'Wrong code.' })
+        break
+    }
   }
 
   return [dispatch, handleSubmit, state]
