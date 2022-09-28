@@ -7,7 +7,6 @@ export default function AuthWrapper({ children }) {
   const { blocked, error, input, isAuthorized } = state
 
   if (isAuthorized) return children
-
   return (
     <Auth
       blocked={blocked}

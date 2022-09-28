@@ -1,7 +1,12 @@
 import { useEffect, useReducer } from 'react'
+import { useRouter } from 'next/router'
+
 import { authenticate } from 'services/auth'
 
 export default function useAuthData() {
+  const router = useRouter()
+  console.log(router)
+
   const initialState = {
     attempts: 0,
     blocked: false,
@@ -30,6 +35,7 @@ export default function useAuthData() {
           error: `You have been blocked.  Please try again in ${action.minutesRemaining} minutes.`,
         }
       case 'UNBLOCK':
+        localStorage.removeItem('blockEpoc')
         return {
           ...state,
           blocked: false,
@@ -41,6 +47,10 @@ export default function useAuthData() {
   }
 
   const [state, dispatch] = useReducer(reducer, initialState)
+
+  useEffect(() => {
+    if (!state.isAuthorized && router.asPath !== '/') router.push('/')
+  }, [router, state.isAuthorized])
 
   useEffect(() => {
     const limit = 5
@@ -58,7 +68,6 @@ export default function useAuthData() {
         dispatch({ type: 'BLOCK', minutesRemaining })
         break
       case !!blockEpoc && difference > limit:
-        localStorage.removeItem('blockEpoc')
         dispatch({ type: 'UNBLOCK' })
         break
       case !!blockEpoc:
