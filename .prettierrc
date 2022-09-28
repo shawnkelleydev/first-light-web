@@ -1,5 +1,6 @@
 {
   "allowParens": false,
+  "arrowParens": "avoid",
   "bracketSameLine": false,
   "bracketSpacing": true,
   "jsxSingleQuote": true,
