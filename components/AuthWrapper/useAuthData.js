@@ -5,7 +5,6 @@ import { authenticate } from 'services/auth'
 
 export default function useAuthData() {
   const router = useRouter()
-  console.log(router)
 
   const initialState = {
     attempts: 0,
@@ -85,6 +84,9 @@ export default function useAuthData() {
     }
 
     switch (true) {
+      case status === 200:
+        dispatch({ type: 'AUTHORIZE' })
+        break
       case !!state.error.length && state.attempts > 5:
         dispatch({ type: 'BLOCK' })
         break
@@ -93,9 +95,6 @@ export default function useAuthData() {
         break
       case !state.input.length:
         dispatch({ type: 'SET_ERROR', error: 'Please provide input' })
-        break
-      case status === 200:
-        dispatch({ type: 'AUTHORIZE' })
         break
       default:
         dispatch({ type: 'SET_ERROR', error: 'Wrong code.' })
