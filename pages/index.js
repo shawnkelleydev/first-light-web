@@ -3,19 +3,19 @@ import Verse from 'components/Verse'
 
 import { getEarthPicData } from 'services/nasa'
 
-export default function Home({ earthPic }) {
+export default function Home({ backgroundImage }) {
   return (
-    <PageWrapper backgroundImage={earthPic}>
+    <PageWrapper backgroundImage={backgroundImage}>
       <Verse />
     </PageWrapper>
   )
 }
 
 export const getStaticProps = async () => {
-  const earthPic = await getEarthPicData()
+  const backgroundImage = await getEarthPicData()
   return {
     props: {
-      earthPic,
+      backgroundImage,
     },
     revalidate: 86400,
   }
