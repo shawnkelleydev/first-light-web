@@ -20,11 +20,11 @@
 }
 
 .active span {
-  background: var(--active-color);
+  background: var(--color-active);
 }
 
 .nav a:hover span {
-  background: var(--hover-color);
+  background: var(--color-hover);
 }
 
 @media (max-width: 768px) {

@@ -1,21 +1,8 @@
 .grid {
-  --color-active: #fff;
-  --color-disabled: #555;
   display: grid;
   gap: 4px;
   grid-template-columns: repeat(auto-fit, 44px);
   margin: 0 0 4px;
 }
 
-.grid button {
-  background: none;
-  border: 1px solid var(--color-active);
-  color: var(--color-active);
-  height: 44px;
-  width: 44px;
-}
 
-.grid button:disabled {
-  border: 1px solid var(--color-disabled);
-  color: var(--color-disabled);
-}

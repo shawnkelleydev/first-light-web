@@ -4,30 +4,32 @@ import Button from './Button'
 
 import styles from './styles.module.css'
 
-export default function BibleMenu({ book, books, loading, onSelect }) {
+export default function BibleMenu({ book, chapter, books, loading, onSelect }) {
   const chapters = books.find(bk => bk.id === book)?.chapters
 
   return (
     <div className={styles.menu}>
       <h2>Menu</h2>
       <ul className={styles.grid}>
-        {books.map((book, idx) => (
+        {books.map((bk, idx) => (
           <Button
             disabled={loading}
             key={idx}
             onClick={onSelect}
+            selected={(bk.id === book).toString()}
             stateKey={KEY_VALUES.book}
-            value={book.id}
+            value={bk.id}
           />
         ))}
       </ul>
       <ul className={styles.grid}>
-        {chapters?.map((chapter, idx) => {
-          const chptr = chapter.id.replace(`${chapter.bookId}.`, '')
+        {chapters?.map((ch, idx) => {
+          const chptr = ch.id.replace(`${ch.bookId}.`, '')
           if (!parseInt(chptr)) return null
 
           return (
             <Button
+              selected={(chptr === chapter).toString()}
               disabled={loading}
               key={idx}
               onClick={onSelect}

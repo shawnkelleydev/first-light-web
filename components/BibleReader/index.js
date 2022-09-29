@@ -8,13 +8,14 @@ import useReaderData from './useReaderData'
 
 export default function BibleReader() {
   const [books, dispatch, state] = useReaderData()
-  const { book, loading, text } = state
+  const { book, chapter, loading, text } = state
 
   return (
     <div className={styles.reader}>
       <BibleMenu
         book={book}
         books={books}
+        chapter={chapter}
         loading={loading}
         onSelect={event =>
           dispatch({
