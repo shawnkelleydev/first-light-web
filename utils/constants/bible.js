@@ -4,3 +4,8 @@ export const KEY_VALUES = {
   loading: 'loading',
   text: 'text',
 }
+
+export const BIBLE_VERSIONS = {
+  ESV: 'ESV',
+  NASB: 'NASB',
+}

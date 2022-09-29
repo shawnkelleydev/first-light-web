@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { meta } from 'utils/constants'
+import { META } from 'utils/constants/meta'
 
 import styles from './styles.module.css'
 
@@ -9,7 +9,7 @@ export default function Logo() {
       <h1>
         <Link href='/'>
           <a>
-            {meta.TITLE.split(' ').map((word, idx) => (
+            {META.TITLE.split(' ').map((word, idx) => (
               <span key={idx}>{word}</span>
             ))}
           </a>

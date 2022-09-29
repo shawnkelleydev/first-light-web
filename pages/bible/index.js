@@ -5,7 +5,7 @@ import { NodeNextRequest } from 'next/dist/server/base-http/node'
 export default function Bible() {
   return (
     <PageWrapper>
-      <h2 style={{ display: 'none' }}>Bible</h2>
+      <h2>Bible</h2>
       <BibleReader />
     </PageWrapper>
   )

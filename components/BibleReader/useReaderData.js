@@ -1,10 +1,14 @@
 import { useEffect, useReducer } from 'react'
+import { useRouter } from 'next/router'
 
 import { getChapter } from 'services/bible'
 import { KEY_VALUES } from 'utils/constants/bible'
 import books from 'utils/constants/data/api-books'
 
 export default function useReaderData() {
+  const router = useRouter()
+  const { q } = router.query
+
   const initialState = {
     book: null,
     chapter: null,
@@ -14,17 +18,27 @@ export default function useReaderData() {
 
   const reducer = (state, action) => {
     const { key, value } = action
-    switch (true) {
-      default:
-        const returnState = key === KEY_VALUES.book ? initialState : state
-        return {
-          ...returnState,
-          [key]: value,
-        }
+
+    const returnState = key === KEY_VALUES.book ? initialState : state
+    return {
+      ...returnState,
+      [key]: value,
     }
   }
 
   const [state, dispatch] = useReducer(reducer, initialState)
+
+  useEffect(() => {
+    if (q) {
+      const keys = [KEY_VALUES.book, KEY_VALUES.chapter]
+      const query = {}
+      q.split('.').map((item, idx) => (query[keys[idx]] = item))
+
+      Object.keys(query).forEach(key => {
+        dispatch({ key, value: query[key] })
+      })
+    }
+  }, [q])
 
   useEffect(() => {
     if (!!state.book && !!state.chapter) {

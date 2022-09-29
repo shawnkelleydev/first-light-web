@@ -9,7 +9,7 @@ export default function BibleMenu({ book, chapter, books, loading, onSelect }) {
 
   return (
     <div className={styles.menu}>
-      <h2>Menu</h2>
+      <h3>Menu</h3>
       <ul className={styles.grid}>
         {books.map((bk, idx) => (
           <Button

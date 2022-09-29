@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import { pages } from 'utils/constants'
+import { PAGES } from 'utils/constants/meta'
 
 import styles from './styles.module.css'
 
@@ -10,7 +10,7 @@ export default function Nav() {
 
   return (
     <nav className={styles.nav}>
-      {pages.map((page, idx) => (
+      {Object.keys(PAGES).map((page, idx) => (
         <Link
           href={`/${page.toLowerCase()}`}
           key={idx}

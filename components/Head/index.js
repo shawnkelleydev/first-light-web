@@ -1,18 +1,18 @@
 import HeadData from 'next/head'
 
-import { meta } from 'utils/constants'
+import { META } from 'utils/constants/meta'
 
 export default function Head() {
   return (
     <HeadData>
-      <title>{meta.TITLE}</title>
+      <title>{META.TITLE}</title>
       <meta
         name='description'
-        content={meta.DESCRIPTION}
+        content={META.DESCRIPTION}
       />
       <meta
         name='keywords'
-        content={meta.KEYWORDS}
+        content={META.KEYWORDS}
       />
       {/* TODO: Add custom favicon to public */}
       <link

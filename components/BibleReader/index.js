@@ -24,7 +24,7 @@ export default function BibleReader() {
           })
         }
       />
-      <h2>Reader</h2>
+      <h3>Reader</h3>
       {text && (
         <article>
           <h3>{text.reference}</h3>

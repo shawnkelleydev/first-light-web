@@ -2,7 +2,7 @@ const getYear = epoc => {
   return epoc.getFullYear()
 }
 
-export const meta = {
+export const META = {
   AUTHOR: 'Shawn Kelley',
   CURRENT_YEAR: getYear(new Date()),
   // TODO: edit DESCRIPTION
@@ -12,4 +12,8 @@ export const meta = {
   TITLE: 'First Light',
 }
 
-export const pages = ['bible', 'space', 'inspiration']
+export const PAGES = {
+  bible: 'bible',
+  space: 'space',
+  inspiration: 'inspiration',
+}
