@@ -1,4 +1,4 @@
-const getYear = (epoc) => {
+const getYear = epoc => {
   return epoc.getFullYear()
 }
 

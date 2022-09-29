@@ -1,15 +1,35 @@
+import { Interweave } from 'interweave'
+
 import styles from './styles.module.css'
+
+import BibleMenu from 'components/BibleMenu'
 
 import useReaderData from './useReaderData'
 
 export default function BibleReader() {
-  const data = useReaderData()
-  console.log('useReaderData:', data)
+  const [books, dispatch, state] = useReaderData()
+  const { book, loading, text } = state
 
   return (
     <div className={styles.reader}>
-      <h3>BibleReader</h3>
-      <article>{data?.verse}</article>
+      <BibleMenu
+        book={book}
+        books={books}
+        loading={loading}
+        onSelect={event =>
+          dispatch({
+            key: event.target.getAttribute('data-key'),
+            value: event.target.getAttribute('data-value'),
+          })
+        }
+      />
+      <h2>Reader</h2>
+      {text && (
+        <article>
+          <h3>{text.reference}</h3>
+          <Interweave content={text.content} />
+        </article>
+      )}
     </div>
   )
 }

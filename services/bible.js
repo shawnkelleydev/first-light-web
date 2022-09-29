@@ -12,7 +12,7 @@ export const getPassage = async passage => {
 }
 
 export const getChapter = async chapter => {
-  const url = `https://api.scripture.api.bible/v1/bibles/a761ca71e0b3ddcf-01/chapters/${chapter}?content-type=html&include-notes=true&include-titles=true&include-chapter-numbers=false&include-verse-numbers=true&include-verse-spans=false`
+  const url = `https://api.scripture.api.bible/v1/bibles/a761ca71e0b3ddcf-01/chapters/${chapter}?content-type=html&include-notes=false&include-titles=true&include-chapter-numbers=false&include-verse-numbers=true&include-verse-spans=false`
 
   const response = await fetch(url, { headers }).catch(error =>
     console.error(error)
