@@ -17,12 +17,13 @@ export default function BibleReader() {
         books={books}
         chapter={chapter}
         loading={loading}
-        onSelect={event =>
+        onSelect={event => {
+          console.log('select')
           dispatch({
             key: event.target.getAttribute('data-key'),
             value: event.target.getAttribute('data-value'),
           })
-        }
+        }}
       />
       <h3>Reader</h3>
       {text && (
