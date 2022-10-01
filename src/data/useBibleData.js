@@ -79,13 +79,15 @@ export default function useReaderData() {
 
   useEffect(() => {
     if (q) {
+      console.log(q)
       const keys = [KEY_VALUES.book, KEY_VALUES.chapter]
       const query = {}
       q.split('.').map((item, idx) => (query[keys[idx]] = item))
 
-      Object.keys(query).forEach(key => {
-        dispatch({ key, value: query[key] })
-      })
+      query.book = books.find(book => book.id === query.book)
+
+      dispatch({ key: KEY_VALUES.book, value: query.book })
+      dispatch({ key: KEY_VALUES.chapter, value: query.chapter })
 
       router.replace('bible')
     }
@@ -116,6 +118,8 @@ export default function useReaderData() {
       getData()
     }
   }, [book, chapter, version])
+
+  console.log(state)
 
   return [books, dispatch, state]
 }
