@@ -11,16 +11,16 @@ export default function BibleHeader({ onClick, state }) {
       <div>
         <button
           data-key={KEY_VALUES.book}
-          data-show={state.book}
           data-value={null}
+          disabled={!state.book}
           onClick={onClick}
         >
           {state.book}
         </button>
         <button
           data-key={KEY_VALUES.chapter}
-          data-show={state.chapter}
           data-value={null}
+          disabled={!state.chapter}
           onClick={onClick}
         >
           {state.chapter}
