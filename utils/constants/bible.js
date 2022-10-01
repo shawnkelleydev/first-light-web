@@ -1,6 +1,7 @@
 export const KEY_VALUES = {
   book: 'book',
   chapter: 'chapter',
+  chapters: 'chapters',
   loading: 'loading',
   text: 'text',
 }

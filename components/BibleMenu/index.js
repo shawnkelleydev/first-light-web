@@ -1,20 +1,19 @@
 import { KEY_VALUES } from 'utils/constants/bible'
 
-import Button from './Button'
 import Keypad from './Keypad'
 
 import styles from './styles.module.css'
 
-export default function BibleMenu({ book, chapter, books, loading, onSelect }) {
-  const chapters = books
-    .find(bk => bk.id === book)
-    ?.chapters.filter(chapter =>
-      parseInt(chapter.id.replace(`${chapter.bookId}.`, ''))
-    )
-
+export default function BibleMenu({
+  book,
+  books,
+  chapter,
+  chapters,
+  loading,
+  onSelect,
+}) {
   return (
     <div className={styles.menu}>
-      <h3>Menu</h3>
       <Keypad
         idCB={item => item.id}
         list={books}

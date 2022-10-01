@@ -12,6 +12,7 @@ export default function useReaderData() {
   const initialState = {
     book: null,
     chapter: null,
+    chapters: null,
     loading: false,
     text: null,
   }
@@ -37,11 +38,22 @@ export default function useReaderData() {
       Object.keys(query).forEach(key => {
         dispatch({ key, value: query[key] })
       })
+
+      router.replace('bible')
     }
   }, [q])
 
   useEffect(() => {
-    if (!!state.book && !!state.chapter) {
+    const chapters = books
+      .find(book => book.id === state.book)
+      ?.chapters.filter(chapter =>
+        parseInt(chapter.id.replace(`${chapter.bookId}.`, ''))
+      )
+    chapters && dispatch({ key: KEY_VALUES.chapters, value: chapters })
+  }, [state.book])
+
+  useEffect(() => {
+    if (state.book && state.chapter) {
       const chapter = state.book + '.' + state.chapter
       const getData = async () => {
         dispatch({ key: KEY_VALUES.loading, value: true })
