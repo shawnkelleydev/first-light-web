@@ -1,6 +1,6 @@
 import Auth from './Auth'
 
-import useAuthData from './useAuthData'
+import useAuthData from 'data/useAuthData'
 
 export default function AuthWrapper({ children }) {
   const [dispatch, handleSubmit, state] = useAuthData()
