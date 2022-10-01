@@ -1,6 +1,13 @@
 import styles from './styles.module.css'
 
-export default function Keypad({ idCB, list, onClick, stateKey, ...rest }) {
+export default function Keypad({
+  disabled,
+  idCB,
+  list,
+  onClick,
+  stateKey,
+  ...rest
+}) {
   return (
     <ul
       className={styles.keypad}

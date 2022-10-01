@@ -25,14 +25,16 @@ export default function useReaderData() {
   }
 
   const reducer = (state, action) => {
+    const { book, versions } = state
     let { key, value } = action
 
     switch (key) {
       case KEY_VALUES.version:
-        value = state.versions.find(version => version.abbreviation === value)
+        value = versions?.find(version => version.abbreviationLocal === value)
         break
       case KEY_VALUES.chapter:
-        value = state.book.chapters.find(chapter =>
+        if (!value) break
+        value = book.chapters.find(chapter =>
           chapter.id.includes(value.toString())
         )
         break
@@ -49,10 +51,15 @@ export default function useReaderData() {
   }
 
   const [state, dispatch] = useReducer(reducer, initialState)
+  const { book, chapter, version } = state
 
   useEffect(() => {
     const getVersions = async () => {
-      const versions = await getBibleData(DATA_TYPES.versions)
+      const ignoreAbbreviations = ['WEB', 'WEBBE', 'WEBUS']
+      let versions = await getBibleData(DATA_TYPES.versions)
+      versions = versions.filter(
+        version => !ignoreAbbreviations.includes(version.abbreviationLocal)
+      )
       dispatch({ key: KEY_VALUES.versions, value: versions })
     }
 
@@ -60,19 +67,15 @@ export default function useReaderData() {
   }, [])
 
   useEffect(() => {
-    if (typeof state.book === 'string') {
+    if (typeof book === 'string') {
       const getBookData = async () => {
-        const book = await getBibleData(
-          DATA_TYPES.book,
-          state.book,
-          state.version.id
-        )
-        dispatch({ key: KEY_VALUES.book, value: book })
+        const bk = await getBibleData(DATA_TYPES.book, book, version.id)
+        dispatch({ key: KEY_VALUES.book, value: bk })
       }
 
       getBookData()
     }
-  }, [state.book, state.version])
+  }, [book, version])
 
   useEffect(() => {
     if (q) {
@@ -90,29 +93,29 @@ export default function useReaderData() {
 
   useEffect(() => {
     const chapters = books
-      .find(book => book.id === state.book)
+      .find(bk => bk.id === book)
       ?.chapters.filter(chapter =>
         parseInt(chapter.id.replace(`${chapter.bookId}.`, ''))
       )
 
     chapters && dispatch({ key: KEY_VALUES.chapters, value: chapters })
-  }, [state.book])
+  }, [book])
 
   useEffect(() => {
-    if (state.version && state.book && state.chapter) {
-      const chapter = state.book.id + '.' + state.chapter.number
-      const version = state.version.id
+    if (version && book && chapter) {
+      const chptr = book.id + '.' + chapter.number
+      const vers = version.id
 
       const getData = async () => {
         dispatch({ key: KEY_VALUES.loading, value: true })
-        const text = await getBibleData(DATA_TYPES.chapter, chapter, version)
+        const text = await getBibleData(DATA_TYPES.chapter, chptr, vers)
         dispatch({ key: KEY_VALUES.text, value: text })
         dispatch({ key: KEY_VALUES.loading, value: false })
       }
 
       getData()
     }
-  }, [state.book, state.chapter, state.version])
+  }, [book, chapter, version])
 
   return [books, dispatch, state]
 }

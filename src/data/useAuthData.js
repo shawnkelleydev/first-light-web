@@ -11,7 +11,7 @@ export default function useAuthData() {
     blocked: false,
     error: '',
     input: '',
-    isAuthorized: false,
+    isAuthorized: true,
   }
 
   const reducer = (state, action) => {

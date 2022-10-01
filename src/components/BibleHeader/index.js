@@ -28,13 +28,13 @@ export default function BibleHeader({ books, onClick, state }) {
           disabled={!version}
           onClick={onClick}
         >
-          {version?.abbreviation}
+          {version?.abbreviationLocal}
         </button>
         <button
           aria-details={`select a book from the ${version?.name} Bible`}
           data-key={KEY_VALUES.book}
           data-value={null}
-          disabled={!book}
+          disabled={!book || !version}
           onClick={onClick}
         >
           {book?.abbreviation}
@@ -43,7 +43,7 @@ export default function BibleHeader({ books, onClick, state }) {
           aria-details={`select a chapter from ${bookTitle}`}
           data-key={KEY_VALUES.chapter}
           data-value={null}
-          disabled={!chapter}
+          disabled={!chapter || !book || !version}
           onClick={onClick}
         >
           {chapter?.number}

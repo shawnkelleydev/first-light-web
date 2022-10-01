@@ -11,9 +11,9 @@ const Keypads = ({ books, onSelect, state }) => {
       return (
         <Keypad
           data-bibles
-          idCB={item => item.abbreviation}
+          data-loading={loading}
+          idCB={item => item.abbreviationLocal}
           list={versions}
-          loading={loading}
           onClick={onSelect}
           stateKey={KEY_VALUES.version}
         />
@@ -21,9 +21,9 @@ const Keypads = ({ books, onSelect, state }) => {
     case !book:
       return (
         <Keypad
+          data-loading={loading}
           idCB={item => item.id}
           list={books}
-          loading={loading}
           onClick={onSelect}
           stateKey={KEY_VALUES.book}
         />
@@ -31,9 +31,9 @@ const Keypads = ({ books, onSelect, state }) => {
     default:
       return (
         <Keypad
+          data-loading={loading}
           idCB={item => item.id.replace(`${item.bookId}.`, '')}
           list={chapters}
-          loading={loading}
           onClick={onSelect}
           stateKey={KEY_VALUES.chapter}
         />
@@ -42,7 +42,7 @@ const Keypads = ({ books, onSelect, state }) => {
 }
 
 export default function BibleMenu({ books, onSelect, state }) {
-  const { book, chapter, version, versions } = state
+  const { book, chapter, version } = state
 
   const getHeaderText = () => {
     switch (true) {
