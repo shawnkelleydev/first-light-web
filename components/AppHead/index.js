@@ -2,7 +2,7 @@ import HeadData from 'next/head'
 
 import { META } from 'utils/constants/meta'
 
-export default function Head() {
+export default function AppHead() {
   return (
     <HeadData>
       <title>{META.TITLE}</title>

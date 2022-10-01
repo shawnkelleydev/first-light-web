@@ -3,7 +3,7 @@ import { META } from 'utils/constants/meta'
 
 import styles from './styles.module.css'
 
-export default function Footer() {
+export default function Copyright() {
   return (
     <ul className={styles.ul}>
       <li>

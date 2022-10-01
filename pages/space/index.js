@@ -1,13 +1,13 @@
-import PageWrapper from 'components/PageWrapper'
+import AppPage from 'components/AppPage'
 
 import styles from './styles.module.css'
 
 export default function Space() {
   return (
-    <PageWrapper>
+    <AppPage>
       <div className={styles.space}>
         <h2>space</h2>
       </div>
-    </PageWrapper>
+    </AppPage>
   )
 }

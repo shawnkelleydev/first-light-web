@@ -1,8 +1,6 @@
-import { Interweave } from 'interweave'
-
 import { KEY_VALUES } from 'utils/constants/bible'
 
-import PageWrapper from 'components/PageWrapper'
+import AppPage from 'components/AppPage'
 import BibleMenu from 'components/BibleMenu'
 import Keypad from 'components/Keypad'
 import BibleReader from 'components/BibleReader'
@@ -48,7 +46,7 @@ export default function Bible() {
     })
 
   return (
-    <PageWrapper>
+    <AppPage>
       <BibleHeader
         onClick={e => {
           dispatch({ key: KEY_VALUES.text, value: null })
@@ -67,6 +65,6 @@ export default function Bible() {
         />
       </BibleMenu>
       <BibleReader text={text} />
-    </PageWrapper>
+    </AppPage>
   )
 }

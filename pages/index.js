@@ -1,4 +1,4 @@
-import PageWrapper from 'components/PageWrapper'
+import PageWrapper from 'components/AppPage'
 import Verse from 'components/Verse'
 
 import { getEarthPicData } from 'services/nasa'

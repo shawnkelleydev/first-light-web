@@ -1,9 +1,9 @@
 import styles from './styles.module.css'
 
-export default function PageContent({ backgroundImage, children }) {
+export default function AppContent({ backgroundImage, children }) {
   return (
     <main
-      className={styles['page-content']}
+      className={styles.content}
       style={
         backgroundImage
           ? { '--background-image': `url(${backgroundImage.url})` }
