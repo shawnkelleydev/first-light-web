@@ -28,9 +28,7 @@ export default function Verse() {
         </button>
       </div>
       <Interweave content={verse.content} />
-      <cite>
-        {verse.reference} {BIBLE_VERSIONS.NASB}
-      </cite>
+      <cite>{verse.reference}</cite>
     </div>
   )
 }

@@ -7,8 +7,8 @@
 }
 
 :root {
-  --color-active: rgb(34, 32, 115);
-  --color-hover: rgb(25, 23, 84);
+  --color-active: #222073;
+  --color-hover: #191754;
 }
 
 h1 {

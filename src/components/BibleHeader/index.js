@@ -4,26 +4,51 @@ import { KEY_VALUES } from 'utils/constants/bible'
 
 import styles from './styles.module.css'
 
-export default function BibleHeader({ onClick, state }) {
+export default function BibleHeader({ books, onClick, state }) {
+  const { book, chapter, version } = state
+  const bookTitle = books.find(book => book.id === book?.abbreviation)?.name
+
+  console.log('%cBibleHeader state:', 'color: aqua', state)
+
   return (
     <header className={styles.header}>
-      <h2>Bible</h2>
+      <h2>
+        <button
+          aria-details={`select a bible version`}
+          data-key={KEY_VALUES.version}
+          data-value={null}
+          onClick={onClick}
+        >
+          Bible
+        </button>
+      </h2>
       <div>
         <button
-          data-key={KEY_VALUES.book}
+          aria-details={`select a Bible version`}
+          data-key={KEY_VALUES.version}
           data-value={null}
-          disabled={!state.book}
+          disabled={!version}
           onClick={onClick}
         >
-          {state.book}
+          {version?.abbreviation}
         </button>
         <button
-          data-key={KEY_VALUES.chapter}
+          aria-details={`select a book from the ${version?.name} Bible`}
+          data-key={KEY_VALUES.book}
           data-value={null}
-          disabled={!state.chapter}
+          disabled={!book}
           onClick={onClick}
         >
-          {state.chapter}
+          {book?.abbreviation}
+        </button>
+        <button
+          aria-details={`select a chapter from ${bookTitle}`}
+          data-key={KEY_VALUES.chapter}
+          data-value={null}
+          disabled={!chapter}
+          onClick={onClick}
+        >
+          {chapter?.number}
         </button>
       </div>
     </header>

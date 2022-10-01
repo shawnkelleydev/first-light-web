@@ -8,7 +8,7 @@ import useBibleData from 'data/useBibleData'
 import BibleHeader from 'components/BibleHeader'
 
 export default function Bible() {
-  const [books, dispatch, state] = useBibleData()
+  const [books, dispatch, state, versions] = useBibleData()
   const { book, chapter, text } = state
 
   const onSelect = e =>
@@ -25,8 +25,10 @@ export default function Bible() {
   return (
     <AppPage>
       <BibleHeader
+        books={books}
         onClick={onClick}
         state={state}
+        versions={versions}
       />
       <BibleMenu
         book={book}
@@ -34,6 +36,7 @@ export default function Bible() {
         chapter={chapter}
         onSelect={onSelect}
         state={state}
+        versions={versions}
       />
       <BibleReader text={text} />
     </AppPage>

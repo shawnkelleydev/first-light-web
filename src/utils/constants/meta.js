@@ -15,5 +15,4 @@ export const META = {
 export const PAGES = {
   bible: 'bible',
   space: 'space',
-  inspiration: 'inspiration',
 }

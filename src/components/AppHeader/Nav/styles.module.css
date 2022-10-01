@@ -8,7 +8,7 @@
   display: flex;
   flex: 1;
   padding: 4px;
-  transition: 0.1s ease-out;
+  transition: 0.1s ease-in-out;
 }
 
 .nav span {
@@ -16,7 +16,8 @@
   display: flex;
   flex: 1;
   justify-content: center;
-  transition: .1s ease-out;
+  padding: 4px;
+  transition: .1s ease-in-out;
 }
 
 .active span {
@@ -27,7 +28,7 @@
   background: var(--color-hover);
 }
 
-@media (max-width: 768px) {
+@media (max-width: 500px) {
   .nav {
     background: #333;
     bottom: 0;
@@ -35,5 +36,10 @@
     left: 0;
     position: fixed;
     right: 0;
+    transition: .2s ease-in-out;
+  }
+
+  .nav[data-scroll-down='true'] {
+    transform: translateY(100%);
   }
 }
