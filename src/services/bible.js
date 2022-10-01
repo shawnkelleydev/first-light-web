@@ -14,7 +14,6 @@ export const getBibleData = async (
       url += 'bibles?language=eng&include-full-details=true'
       break
     case DATA_TYPES.book:
-      console.log('%cfire data book', 'color: red')
       url += `bibles/${version}/books/${reference}?include-chapters=true`
       break
     case DATA_TYPES.chapter:

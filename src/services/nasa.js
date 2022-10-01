@@ -1,7 +1,7 @@
 export const getEarthPicData = async () => {
   let url = 'https://epic.gsfc.nasa.gov/api/natural'
 
-  const response = await fetch(url).catch((error) => console.error(error))
+  const response = await fetch(url).catch(error => console.error(error))
   const data = await response.json()
 
   const n = Math.floor(Math.random() * data.length)

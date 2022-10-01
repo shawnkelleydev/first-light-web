@@ -1,8 +1,11 @@
 import styles from './styles.module.css'
 
-export default function Keypad({ idCB, list, onClick, stateKey }) {
+export default function Keypad({ idCB, list, onClick, stateKey, ...rest }) {
   return (
-    <ul className={styles.keypad}>
+    <ul
+      className={styles.keypad}
+      {...rest}
+    >
       {list?.map((item, idx) => (
         <li key={idx}>
           <button

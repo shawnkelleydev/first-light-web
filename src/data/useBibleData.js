@@ -50,8 +50,6 @@ export default function useReaderData() {
 
   const [state, dispatch] = useReducer(reducer, initialState)
 
-  console.log('state', state)
-
   useEffect(() => {
     const getVersions = async () => {
       const versions = await getBibleData(DATA_TYPES.versions)
@@ -64,7 +62,6 @@ export default function useReaderData() {
   useEffect(() => {
     if (typeof state.book === 'string') {
       const getBookData = async () => {
-        console.log('%cgetBookData', 'color: lime', state.book)
         const book = await getBibleData(
           DATA_TYPES.book,
           state.book,

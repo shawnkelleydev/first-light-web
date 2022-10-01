@@ -10,6 +10,7 @@ const Keypads = ({ books, onSelect, state }) => {
     case !version:
       return (
         <Keypad
+          data-bibles
           idCB={item => item.abbreviation}
           list={versions}
           loading={loading}

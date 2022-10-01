@@ -2,6 +2,8 @@
   align-items: center;
   background: #333;
   display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
   justify-content: space-between;
   margin: 0 -8px;
   padding: 8px;
@@ -26,7 +28,7 @@
   border: none;
   color: #fff;
   height: 3em;
-  width: 4em;
+  width: 5em;
   transition: .2s ease-in-out;
 }
 

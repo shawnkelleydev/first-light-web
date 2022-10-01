@@ -8,8 +8,6 @@ export default function BibleHeader({ books, onClick, state }) {
   const { book, chapter, version } = state
   const bookTitle = books.find(book => book.id === book?.abbreviation)?.name
 
-  console.log('%cBibleHeader state:', 'color: aqua', state)
-
   return (
     <header className={styles.header}>
       <h2>
