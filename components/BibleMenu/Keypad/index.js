@@ -1,7 +1,3 @@
-import Button from '../Button'
-
-import { KEY_VALUES } from 'utils/constants/bible'
-
 import styles from './styles.module.css'
 
 export default function Keypad({
@@ -15,14 +11,20 @@ export default function Keypad({
   return (
     <ul className={styles.keypad}>
       {list?.map((item, idx) => (
-        <Button
-          disabled={loading}
+        <li
+          className={styles.button}
           key={idx}
-          onClick={onSelect}
-          selected={idCB(item) === selectedId}
-          stateKey={stateKey}
-          value={idCB(item)}
-        />
+        >
+          <button
+            data-selected={idCB(item) === selectedId}
+            data-key={stateKey}
+            data-value={idCB(item)}
+            disabled={loading}
+            onClick={onSelect}
+          >
+            {idCB(item)}
+          </button>
+        </li>
       ))}
     </ul>
   )
