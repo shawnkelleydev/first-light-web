@@ -41,7 +41,7 @@ export default function useReaderData() {
 
       router.replace('bible')
     }
-  }, [q])
+  }, [q, router])
 
   useEffect(() => {
     const chapters = books
