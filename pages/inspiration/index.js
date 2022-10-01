@@ -1,9 +1,9 @@
-import PageWrapper from 'components/PageWrapper'
+import AppPage from 'components/AppPage'
 
 export default function Inspiration() {
   return (
-    <PageWrapper>
+    <AppPage>
       <h2>inspiration</h2>
-    </PageWrapper>
+    </AppPage>
   )
 }
