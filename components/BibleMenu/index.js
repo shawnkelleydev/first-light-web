@@ -1,35 +1,20 @@
 import { KEY_VALUES } from 'utils/constants/bible'
 
-import Keypad from './Keypad'
-
 import styles from './styles.module.css'
 
-export default function BibleMenu({
-  book,
-  books,
-  chapter,
-  chapters,
-  loading,
-  onSelect,
-}) {
+export default function BibleMenu({ children, book, chapter }) {
+  const headerText = !book
+    ? KEY_VALUES.book
+    : !chapter
+    ? KEY_VALUES.chapter
+    : null
+
+  if (book && chapter) return null
+
   return (
     <div className={styles.menu}>
-      <Keypad
-        idCB={item => item.id}
-        list={books}
-        loading={loading}
-        onSelect={onSelect}
-        selectedId={book}
-        stateKey={KEY_VALUES.book}
-      />
-      <Keypad
-        idCB={item => item.id.replace(`${item.bookId}.`, '')}
-        list={chapters}
-        loading={loading}
-        onSelect={onSelect}
-        selectedId={chapter}
-        stateKey={KEY_VALUES.chapter}
-      />
+      <h3>{headerText}</h3>
+      {children}
     </div>
   )
 }

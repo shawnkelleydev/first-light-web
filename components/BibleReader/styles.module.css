@@ -1,3 +1,16 @@
-.reader {
-  /* background: tomato; */
+.reader h3 {
+  margin: 1em 0;
+}
+
+.reader p {
+  margin: 1em 0;
+  line-height: 1.1em;
+}
+
+.reader span[data-sid] { 
+  color: #aaa;
+  font-size: .8em;
+  margin: 0 4px;
+  position: relative;
+  bottom: .3em;
 }

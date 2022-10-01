@@ -1,8 +1,19 @@
-.grid {
-  display: grid;
-  gap: 4px;
-  grid-template-columns: repeat(auto-fit, 44px);
-  margin: 0 0 4px;
+.menu {
+  animation: slidedown .5s ease-in-out;
 }
 
+.menu h3 {
+  margin: .5em 0;
+  text-transform: capitalize;
+}
 
+@keyframes slidedown {
+  0% {
+    opacity: 0;
+    transform: translateY(-20%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

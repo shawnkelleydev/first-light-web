@@ -1,0 +1,24 @@
+.header {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+.header div {
+  display: flex;
+  gap: 4px;
+}
+
+.header button {
+  background: var(--color-active);
+  border: none;
+  color: #fff;
+  padding: auto;
+  height: 44px;
+  width: 44px;
+  transition: .1s ease-in-out;
+}
+
+.header button:not([data-show]) {
+  opacity: 0;
+}
