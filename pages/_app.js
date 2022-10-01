@@ -1,13 +1,13 @@
 import 'normalize.css'
 import 'styles/globals.css'
 
-import AuthWrapper from 'components/AuthWrapper'
+import AppAuth from 'components/AppAuth'
 
 function MyApp({ Component, pageProps }) {
   return (
-    <AuthWrapper>
+    <AppAuth>
       <Component {...pageProps} />
-    </AuthWrapper>
+    </AppAuth>
   )
 }
 

@@ -17,13 +17,15 @@ export default function Bible() {
       value: e.target.getAttribute('data-value'),
     })
 
+  const onClick = e => {
+    dispatch({ key: KEY_VALUES.text, value: null })
+    onSelect(e)
+  }
+
   return (
     <AppPage>
       <BibleHeader
-        onClick={e => {
-          dispatch({ key: KEY_VALUES.text, value: null })
-          onSelect(e)
-        }}
+        onClick={onClick}
         state={state}
       />
       <BibleMenu

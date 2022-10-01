@@ -2,7 +2,7 @@ import Auth from './Auth'
 
 import useAuthData from 'data/useAuthData'
 
-export default function AuthWrapper({ children }) {
+export default function AppAuth({ children }) {
   const [dispatch, handleSubmit, state] = useAuthData()
   const { blocked, error, input, isAuthorized } = state
 
