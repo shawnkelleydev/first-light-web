@@ -1,13 +1,6 @@
 import styles from './styles.module.css'
 
-export default function Keypad({
-  disabled,
-  idCB,
-  list,
-  onClick,
-  stateKey,
-  ...rest
-}) {
+export default function Keypad({ disabled, idCB, list, onClick, ...rest }) {
   return (
     <ul
       className={styles.keypad}
@@ -16,9 +9,8 @@ export default function Keypad({
       {list?.map((item, idx) => (
         <li key={idx}>
           <button
-            data-key={stateKey}
-            data-value={idCB(item)}
-            onClick={onClick}
+            disabled={disabled}
+            onClick={() => onClick(item)}
           >
             {idCB(item)}
           </button>

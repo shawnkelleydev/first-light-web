@@ -1,50 +1,65 @@
 import React from 'react'
 
-import { KEY_VALUES } from 'utils/constants/bible'
+import { BIBLE_STATE_KEYS } from 'utils/constants/bible'
 
 import styles from './styles.module.css'
 
-export default function BibleHeader({ books, onClick, state }) {
-  const { book, chapter, version } = state
-  const bookTitle = books.find(book => book.id === book?.abbreviation)?.name
+export default function BibleHeader({ dispatch, state }) {
+  const { bible, book, chapter } = state.input
 
   return (
     <header className={styles.header}>
       <h2>
         <button
-          aria-details={`select a bible version`}
-          data-key={KEY_VALUES.version}
-          data-value={null}
-          onClick={onClick}
+          aria-details={
+            bible
+              ? `Select a Bible.  You're currently using the ${bible.name}.`
+              : 'Select a Bible.'
+          }
+          onClick={() =>
+            dispatch({
+              parentKey: BIBLE_STATE_KEYS.input,
+              key: BIBLE_STATE_KEYS.bible,
+            })
+          }
         >
           Bible
         </button>
       </h2>
       <div>
         <button
-          aria-details={`select a Bible version`}
-          data-key={KEY_VALUES.version}
-          data-value={null}
-          disabled={!version}
-          onClick={onClick}
+          aria-details={`Select a Bible.  You're currently using the ${bible?.name}.`}
+          disabled={!bible}
+          onClick={() =>
+            dispatch({
+              parentKey: BIBLE_STATE_KEYS.input,
+              key: BIBLE_STATE_KEYS.bible,
+            })
+          }
         >
-          {version?.abbreviationLocal}
+          {bible?.abbreviationLocal}
         </button>
         <button
-          aria-details={`select a book from the ${version?.name} Bible`}
-          data-key={KEY_VALUES.book}
-          data-value={null}
-          disabled={!book || !version}
-          onClick={onClick}
+          aria-details={`select a book from the ${bible?.name}`}
+          disabled={!book || !bible}
+          onClick={() =>
+            dispatch({
+              parentKey: BIBLE_STATE_KEYS.input,
+              key: BIBLE_STATE_KEYS.book,
+            })
+          }
         >
-          {book?.abbreviation}
+          {book?.id}
         </button>
         <button
-          aria-details={`select a chapter from ${bookTitle}`}
-          data-key={KEY_VALUES.chapter}
-          data-value={null}
-          disabled={!chapter || !book || !version}
-          onClick={onClick}
+          aria-details={`select a chapter from ${'[book]'}`}
+          disabled={!chapter || !book || !bible}
+          onClick={() =>
+            dispatch({
+              parentKey: BIBLE_STATE_KEYS.input,
+              key: BIBLE_STATE_KEYS.chapter,
+            })
+          }
         >
           {chapter?.number}
         </button>

@@ -1,70 +1,85 @@
-import { KEY_VALUES } from 'utils/constants/bible'
+import { BIBLE_STATE_KEYS } from 'utils/constants/bible'
 
 import Keypad from 'components/Keypad'
 
 import styles from './styles.module.css'
 
-const Keypads = ({ books, onSelect, state }) => {
-  const { book, chapters, loading, version, versions } = state
+const Keypads = ({
+  bible,
+  bibles,
+  book,
+  chapter,
+  dispatch,
+  inputMethods,
+  loading,
+}) => {
+  const { setBible, setBook } = inputMethods
+
   switch (true) {
-    case !version:
+    case !bible:
       return (
         <Keypad
           data-bibles
-          data-loading={loading}
+          disabled={loading}
           idCB={item => item.abbreviationLocal}
-          list={versions}
-          onClick={onSelect}
-          stateKey={KEY_VALUES.version}
+          list={bibles}
+          onClick={bible => setBible(bibles, bible.id)}
         />
       )
     case !book:
       return (
         <Keypad
-          data-loading={loading}
+          disabled={loading}
           idCB={item => item.id}
-          list={books}
-          onClick={onSelect}
-          stateKey={KEY_VALUES.book}
+          list={bible?.books}
+          onClick={book => setBook(bible, book.id)}
+        />
+      )
+    case !chapter:
+      return (
+        <Keypad
+          disabled={loading}
+          idCB={item => item.id.replace(`${item.bookId}.`, '')}
+          list={book.chapters}
+          onClick={chapter =>
+            dispatch({
+              parentKey: BIBLE_STATE_KEYS.input,
+              key: BIBLE_STATE_KEYS.chapter,
+              value: chapter,
+            })
+          }
         />
       )
     default:
-      return (
-        <Keypad
-          data-loading={loading}
-          idCB={item => item.id.replace(`${item.bookId}.`, '')}
-          list={chapters}
-          onClick={onSelect}
-          stateKey={KEY_VALUES.chapter}
-        />
-      )
+      return null
   }
 }
 
-export default function BibleMenu({ books, onSelect, state }) {
-  const { book, chapter, version } = state
-
+export default function BibleMenu({ dispatch, state }) {
   const getHeaderText = () => {
     switch (true) {
-      case !version:
-        return KEY_VALUES.version
-      case !book:
-        return KEY_VALUES.book
-      case !chapter:
-        return KEY_VALUES.chapter
+      case !state.input.bible:
+        return BIBLE_STATE_KEYS.bible
+      case !state.input.book:
+        return BIBLE_STATE_KEYS.book
+      case !state.input.chapter:
+        return BIBLE_STATE_KEYS.chapter
       default:
         return null
     }
   }
 
-  if (version && book && chapter) return null
-
   return (
     <div className={styles.menu}>
       <h3>{getHeaderText()}</h3>
       <Keypads
-        books={books}
-        onSelect={onSelect}
+        bible={state.input.bible}
+        bibles={state.api.bibles}
+        book={state.input.book}
+        chapter={state.input.chapter}
+        dispatch={dispatch}
+        inputMethods={state.input.methods}
+        loading={state.loading}
         state={state}
       />
     </div>

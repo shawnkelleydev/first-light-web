@@ -1,4 +1,4 @@
-import { KEY_VALUES } from 'utils/constants/bible'
+// import { BIBLE_STATE_KEYS } from 'utils/constants/bible'
 
 import AppPage from 'components/AppPage'
 import BibleMenu from 'components/BibleMenu'
@@ -8,37 +8,23 @@ import useBibleData from 'data/useBibleData'
 import BibleHeader from 'components/BibleHeader'
 
 export default function Bible() {
-  const [books, dispatch, state, versions] = useBibleData()
-  const { book, chapter, text } = state
-
-  const onSelect = e =>
-    dispatch({
-      key: e.target.getAttribute('data-key'),
-      value: e.target.getAttribute('data-value'),
-    })
-
-  const onClick = e => {
-    dispatch({ key: KEY_VALUES.text, value: null })
-    onSelect(e)
-  }
+  const [dispatch, state] = useBibleData()
+  console.log('STATE', state)
 
   return (
     <AppPage>
       <BibleHeader
-        books={books}
-        onClick={onClick}
+        dispatch={dispatch}
         state={state}
-        versions={versions}
       />
       <BibleMenu
-        book={book}
-        books={books}
-        chapter={chapter}
-        onSelect={onSelect}
+        dispatch={dispatch}
         state={state}
-        versions={versions}
       />
-      <BibleReader text={text} />
+      <BibleReader
+        loading={state.loading}
+        passageData={state.api.passageData}
+      />
     </AppPage>
   )
 }

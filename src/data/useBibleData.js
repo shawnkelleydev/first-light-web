@@ -1,125 +1,118 @@
 import { useEffect, useReducer } from 'react'
-import { useRouter } from 'next/router'
 
 import { getBibleData } from 'services/bible'
 
 import {
-  KEY_VALUES,
-  DEFAULT_BIBLE_VERSION,
-  DATA_TYPES,
+  BIBLE_IDS,
+  BIBLE_QUERY_TYPES,
+  BIBLE_STATE_KEYS,
 } from 'utils/constants/bible'
-import books from 'utils/constants/data/api-books'
 
 export default function useReaderData() {
-  const router = useRouter()
-  const { q } = router.query
+  const setBible = async (bibles, bibleId) => {
+    dispatch({ key: BIBLE_STATE_KEYS.loading, value: true })
+
+    dispatch({ parentKey: BIBLE_STATE_KEYS.input, key: BIBLE_STATE_KEYS.book })
+    dispatch({
+      parentKey: BIBLE_STATE_KEYS.input,
+      key: BIBLE_STATE_KEYS.chapter,
+    })
+
+    const bible = bibles.find(bib => bib.id === bibleId)
+    const books = await getBibleData(BIBLE_QUERY_TYPES.books, bibleId)
+    bible.books = books
+
+    dispatch({
+      parentKey: BIBLE_STATE_KEYS.input,
+      key: BIBLE_STATE_KEYS.bible,
+      value: bible,
+    })
+
+    dispatch({ key: BIBLE_STATE_KEYS.loading, value: false })
+  }
+
+  const setBook = (bible, bookId) => {
+    const book = bible.books.find(book => book.id === bookId)
+
+    dispatch({
+      parentKey: BIBLE_STATE_KEYS.input,
+      key: BIBLE_STATE_KEYS.chapter,
+    })
+
+    dispatch({
+      parentKey: BIBLE_STATE_KEYS.input,
+      key: BIBLE_STATE_KEYS.book,
+      value: book,
+    })
+  }
 
   const initialState = {
-    book: null,
-    chapter: null,
-    chapters: null,
+    api: {},
+    input: { methods: { setBible, setBook } },
     loading: false,
-    text: null,
-    version: DEFAULT_BIBLE_VERSION,
-    versions: null,
   }
 
   const reducer = (state, action) => {
-    const { book, versions } = state
-    let { key, value } = action
+    let { key, parentKey, value } = action
 
-    switch (key) {
-      case KEY_VALUES.version:
-        value = versions?.find(version => version.abbreviationLocal === value)
-        break
-      case KEY_VALUES.chapter:
-        if (!value) break
-        value = book.chapters.find(chapter =>
-          chapter.id.includes(value.toString())
-        )
-        break
-      case KEY_VALUES.book:
-        return { ...state, [key]: value, chapter: null }
+    switch (true) {
+      case !!parentKey && !!value:
+        return { ...state, [parentKey]: { ...state[parentKey], [key]: value } }
+      case !!parentKey && !value:
+        return { ...state, [parentKey]: { ...state[parentKey], [key]: null } }
       default:
-        break
-    }
-
-    return {
-      ...state,
-      [key]: value,
+        return { ...state, [key]: value }
     }
   }
 
   const [state, dispatch] = useReducer(reducer, initialState)
-  const { book, chapter, version } = state
 
   useEffect(() => {
-    const getVersions = async () => {
-      const ignoreAbbreviations = ['WEB', 'WEBBE', 'WEBUS']
-      let versions = await getBibleData(DATA_TYPES.versions)
-      versions = versions.filter(
-        version => !ignoreAbbreviations.includes(version.abbreviationLocal)
-      )
-      dispatch({ key: KEY_VALUES.versions, value: versions })
+    const getBibles = async () => {
+      const bibles = await getBibleData(BIBLE_QUERY_TYPES.bibles)
+      dispatch({
+        key: BIBLE_STATE_KEYS.bibles,
+        parentKey: BIBLE_STATE_KEYS.api,
+        value: bibles,
+      })
+
+      // set default Bible in state
+      const bible = bibles.find(bible => bible.id === BIBLE_IDS.nasb)
+
+      const books = await getBibleData(BIBLE_QUERY_TYPES.books, bible.id)
+      bible.books = books
+
+      dispatch({
+        parentKey: BIBLE_STATE_KEYS.input,
+        key: BIBLE_STATE_KEYS.bible,
+        value: bible,
+      })
     }
 
-    getVersions()
+    getBibles()
   }, [])
 
-  useEffect(() => {
-    if (typeof book === 'string') {
-      const getBookData = async () => {
-        const bk = await getBibleData(DATA_TYPES.book, book, version.id)
-        dispatch({ key: KEY_VALUES.book, value: bk })
-      }
-
-      getBookData()
-    }
-  }, [book, version])
+  const { bible, book, chapter } = state.input
 
   useEffect(() => {
-    if (q) {
-      console.log(q)
-      const keys = [KEY_VALUES.book, KEY_VALUES.chapter]
-      const query = {}
-      q.split('.').map((item, idx) => (query[keys[idx]] = item))
-
-      query.book = books.find(book => book.id === query.book)
-
-      dispatch({ key: KEY_VALUES.book, value: query.book })
-      dispatch({ key: KEY_VALUES.chapter, value: query.chapter })
-
-      router.replace('bible')
-    }
-  }, [q, router])
-
-  useEffect(() => {
-    const chapters = books
-      .find(bk => bk.id === book)
-      ?.chapters.filter(chapter =>
-        parseInt(chapter.id.replace(`${chapter.bookId}.`, ''))
+    const setPassageData = async reference => {
+      dispatch({ key: BIBLE_STATE_KEYS.loading, value: true })
+      const passageData = await getBibleData(
+        BIBLE_QUERY_TYPES.chapter,
+        bible.id,
+        reference
       )
 
-    chapters && dispatch({ key: KEY_VALUES.chapters, value: chapters })
-  }, [book])
-
-  useEffect(() => {
-    if (version && book && chapter) {
-      const chptr = book.id + '.' + chapter.number
-      const vers = version.id
-
-      const getData = async () => {
-        dispatch({ key: KEY_VALUES.loading, value: true })
-        const text = await getBibleData(DATA_TYPES.chapter, chptr, vers)
-        dispatch({ key: KEY_VALUES.text, value: text })
-        dispatch({ key: KEY_VALUES.loading, value: false })
-      }
-
-      getData()
+      dispatch({
+        parentKey: BIBLE_STATE_KEYS.api,
+        key: BIBLE_STATE_KEYS.passageData,
+        value: passageData,
+      })
+      dispatch({ key: BIBLE_STATE_KEYS.loading, value: false })
     }
-  }, [book, chapter, version])
 
-  console.log(state)
+    bible && book && chapter && setPassageData(chapter.id)
+  }, [bible, book, chapter])
 
-  return [books, dispatch, state]
+  return [dispatch, state]
 }

@@ -24,3 +24,12 @@
   color: #aaa;  
   text-transform: uppercase;
 }
+
+.reader cite {
+  color: #aaa;
+  display: flex;
+  font-size: .8em;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+}
