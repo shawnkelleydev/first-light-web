@@ -9,7 +9,12 @@
   padding: 8px;
   position: sticky;
   top: 0;
+  transition: 0.1s ease-in-out;
   z-index: 1;
+}
+
+.header[data-scroll-down='true'] {
+  translate: 0 -100%;
 }
 
 .header h2 button {

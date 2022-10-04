@@ -1,14 +1,19 @@
 import React from 'react'
 
+import useScrollDirection from 'hooks/useScrollDirection'
 import { BIBLE_STATE_KEYS } from 'utils/constants/bible'
 
 import styles from './styles.module.css'
 
 export default function BibleHeader({ dispatch, state }) {
   const { bible, book, chapter } = state.input
+  const isScrollDown = useScrollDirection()
 
   return (
-    <header className={styles.header}>
+    <header
+      className={styles.header}
+      data-scroll-down={isScrollDown}
+    >
       <h2>
         <button
           aria-details={
