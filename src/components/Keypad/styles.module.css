@@ -2,12 +2,12 @@
   animation: slidedown .5s ease-in-out;
   display: grid;
   gap: 4px;
-  grid-template-columns: repeat(auto-fit, minmax(44px, 15vw));
+  grid-template-columns: repeat(auto-fit, 44px);
   margin: 0 0 4px;
 }
 
 .keypad[data-bibles] {
-  grid-template-columns: repeat(auto-fit, minmax(100px, 15vw));
+  grid-template-columns: repeat(auto-fit, minmax(80px, 15vw));
 }
 
 .keypad li {
@@ -28,4 +28,15 @@
 
 .keypad button:hover {
   background: var(--color-hover);
+}
+
+@keyframes slidedown {
+  0% {
+    opacity: 0;
+    translate: 0 -10%;
+  }
+  100% {
+    opacity: 1;
+    translate: 0 0;
+  }
 }

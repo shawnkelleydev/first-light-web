@@ -1,19 +1,29 @@
 .menu {
-  animation: slidedown .5s ease-in-out;
+  align-items: center;
+  background: #000000b8;
+  backdrop-filter: blur(12px);
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.menu > div {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  overflow: auto;
+  padding: 24px;
+  width: min(400px, 90vw);
+  height: min(800px, 90vh);
 }
 
 .menu h3 {
   margin: .5em 0;
   text-transform: capitalize;
-}
-
-@keyframes slidedown {
-  0% {
-    opacity: 0;
-    transform: translateY(-20%);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }

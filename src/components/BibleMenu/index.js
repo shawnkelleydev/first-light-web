@@ -56,32 +56,38 @@ const Keypads = ({
 }
 
 export default function BibleMenu({ dispatch, state }) {
+  const { bible, book, chapter } = state.input
+
   const getHeaderText = () => {
     switch (true) {
-      case !state.input.bible:
+      case !bible:
         return BIBLE_STATE_KEYS.bible
-      case !state.input.book:
+      case !book:
         return BIBLE_STATE_KEYS.book
-      case !state.input.chapter:
+      case !chapter:
         return BIBLE_STATE_KEYS.chapter
       default:
         return null
     }
   }
 
+  if (bible && book && chapter) return null
+
   return (
     <div className={styles.menu}>
-      <h3>{getHeaderText()}</h3>
-      <Keypads
-        bible={state.input.bible}
-        bibles={state.api.bibles}
-        book={state.input.book}
-        chapter={state.input.chapter}
-        dispatch={dispatch}
-        inputMethods={state.input.methods}
-        loading={state.loading}
-        state={state}
-      />
+      <div>
+        <h3>{getHeaderText()}</h3>
+        <Keypads
+          bible={state.input.bible}
+          bibles={state.api.bibles}
+          book={state.input.book}
+          chapter={state.input.chapter}
+          dispatch={dispatch}
+          inputMethods={state.input.methods}
+          loading={state.loading}
+          state={state}
+        />
+      </div>
     </div>
   )
 }
