@@ -3,6 +3,7 @@ export const BIBLE_QUERY_TYPES = {
   book: 'book',
   books: 'books',
   chapter: 'chapter',
+  esv: 'esv',
 }
 
 export const BIBLE_INPUT_TYPES = {
@@ -25,3 +26,4 @@ export const BIBLE_STATE_KEYS = {
 
 export const BIBLE_IDS = {
   nasb: 'a761ca71e0b3ddcf-01',
+}
