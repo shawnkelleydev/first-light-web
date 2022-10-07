@@ -1,6 +1,4 @@
-const getYear = epoc => {
-  return epoc.getFullYear()
-}
+import { getYear } from 'utils/time'
 
 export const META = {
   AUTHOR: 'Shawn Kelley',

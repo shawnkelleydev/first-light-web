@@ -2,12 +2,15 @@ import 'normalize.css'
 import 'styles/globals.css'
 
 import AppAuth from 'components/AppAuth'
+import { AppContextProvider } from 'context'
 
 function MyApp({ Component, pageProps }) {
   return (
-    <AppAuth>
-      <Component {...pageProps} />
-    </AppAuth>
+    <AppContextProvider>
+      <AppAuth>
+        <Component {...pageProps} />
+      </AppAuth>
+    </AppContextProvider>
   )
 }
 

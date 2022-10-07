@@ -1,20 +1,11 @@
 import { BIBLE_STATE_KEYS } from 'utils/constants/bible'
+import { setBible, setBook } from 'utils/bible'
 
 import Keypad from 'components/Keypad'
 
 import styles from './styles.module.css'
 
-const Keypads = ({
-  bible,
-  bibles,
-  book,
-  chapter,
-  dispatch,
-  inputMethods,
-  loading,
-}) => {
-  const { setBible, setBook } = inputMethods
-
+const Keypads = ({ bible, bibles, book, chapter, dispatch, loading }) => {
   switch (true) {
     case !bible:
       return (
@@ -23,7 +14,7 @@ const Keypads = ({
           disabled={loading}
           idCB={item => item.abbreviationLocal}
           list={bibles}
-          onClick={bible => setBible(bibles, bible.id)}
+          onClick={bible => setBible(bibles, bible.id, dispatch)}
         />
       )
     case !book:
@@ -32,7 +23,7 @@ const Keypads = ({
           disabled={loading}
           idCB={item => item.id}
           list={bible?.books}
-          onClick={book => setBook(bible, book.id)}
+          onClick={book => setBook(bible, book.id, dispatch)}
         />
       )
     case !chapter:

@@ -9,46 +9,9 @@ import {
 } from 'utils/constants/bible'
 
 export default function useReaderData() {
-  const setBible = async (bibles, bibleId) => {
-    dispatch({ key: BIBLE_STATE_KEYS.loading, value: true })
-
-    dispatch({ parentKey: BIBLE_STATE_KEYS.input, key: BIBLE_STATE_KEYS.book })
-    dispatch({
-      parentKey: BIBLE_STATE_KEYS.input,
-      key: BIBLE_STATE_KEYS.chapter,
-    })
-
-    const bible = bibles.find(bib => bib.id === bibleId)
-    const books = await getBibleData(BIBLE_QUERY_TYPES.books, bibleId)
-    bible.books = books
-
-    dispatch({
-      parentKey: BIBLE_STATE_KEYS.input,
-      key: BIBLE_STATE_KEYS.bible,
-      value: bible,
-    })
-
-    dispatch({ key: BIBLE_STATE_KEYS.loading, value: false })
-  }
-
-  const setBook = (bible, bookId) => {
-    const book = bible.books.find(book => book.id === bookId)
-
-    dispatch({
-      parentKey: BIBLE_STATE_KEYS.input,
-      key: BIBLE_STATE_KEYS.chapter,
-    })
-
-    dispatch({
-      parentKey: BIBLE_STATE_KEYS.input,
-      key: BIBLE_STATE_KEYS.book,
-      value: book,
-    })
-  }
-
   const initialState = {
     api: {},
-    input: { methods: { setBible, setBook } },
+    input: {},
     loading: false,
   }
 
