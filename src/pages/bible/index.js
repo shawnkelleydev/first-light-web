@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react'
 import { BIBLE_STATE_KEYS } from 'utils/constants/bible'
 
 import AppPage from 'components/AppPage'
@@ -8,26 +9,24 @@ import BibleHeader from 'components/BibleHeader'
 import { useAppContext } from 'context'
 
 export default function Bible() {
+  const [showMenu, setShowMenu] = useState(false)
   const { dispatch, state } = useAppContext()
   const { input, passage } = state.bible
 
+  useEffect(() => {
+    if (!input.book || !input.chapter) setShowMenu(true)
+    else setShowMenu(false)
+  }, [input])
+
   const onClick = (key, value) => {
+    setShowMenu(true)
     dispatch({ type: 'SET_BIBLE_INPUT', key, value })
 
-    switch (key) {
-      case BIBLE_STATE_KEYS.book:
-        dispatch({
-          type: 'SET_BIBLE_INPUT',
-          key: BIBLE_STATE_KEYS.chapter,
-        })
-        break
-      case BIBLE_STATE_KEYS.chapter:
-        dispatch({
-          type: 'SET_BIBLE_DATA',
-          key: BIBLE_STATE_KEYS.passage,
-        })
-        break
-    }
+    if (key === BIBLE_STATE_KEYS.book)
+      dispatch({
+        type: 'SET_BIBLE_INPUT',
+        key: BIBLE_STATE_KEYS.chapter,
+      })
   }
 
   return (
@@ -39,6 +38,8 @@ export default function Bible() {
       <BibleMenu
         input={input}
         onClick={onClick}
+        setShow={setShowMenu}
+        show={showMenu}
       />
       <BibleReader passage={passage} />
     </AppPage>

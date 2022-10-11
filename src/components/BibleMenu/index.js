@@ -5,9 +5,8 @@ import Keypad from 'components/Keypad'
 
 import styles from './styles.module.css'
 
-export default function BibleMenu({ input, onClick }) {
+export default function BibleMenu({ input, onClick, setShow, show }) {
   const { book, chapter } = input
-  console.log('BIBLE MENU:', book, chapter)
 
   const getChapters = chapters => {
     const formattedList = []
@@ -32,12 +31,15 @@ export default function BibleMenu({ input, onClick }) {
   const books = [Object.keys(data[0]), Object.keys(data[1])]
   const chapters = getChapters(data[0][book]?.length || data[1][book]?.length)
 
-  if (book && chapter) return null
+  if (!show) return null
 
   return (
     <div className={styles.menu}>
       <div>
-        <h3>{getHeaderText()}</h3>
+        <span>
+          <h3>{getHeaderText()}</h3>
+          <button onClick={() => setShow(false)}>X</button>
+        </span>
         {!book &&
           books.map((testament, idx) => (
             <Keypad

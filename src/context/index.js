@@ -57,7 +57,6 @@ export const AppContextProvider = ({ children }) => {
       })
     }
 
-    console.log('CONTEXT EFFECT', book, chapter)
     book && chapter && getPassage()
 
     return () => abortController.abort()

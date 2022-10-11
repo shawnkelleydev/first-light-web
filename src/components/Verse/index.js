@@ -42,7 +42,6 @@ export default function Verse() {
       ? canonical.replace(book, '').trim().split(':')[0]
       : '1'
 
-    console.log('handleReadChapter', book, chapter)
     dispatch({
       type: 'SET_BIBLE_INPUT',
       key: BIBLE_STATE_KEYS.book,

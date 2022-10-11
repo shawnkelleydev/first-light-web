@@ -4,7 +4,6 @@ import { ESV_COPYRIGHT } from 'utils/constants/bible'
 import styles from './styles.module.css'
 
 export default function BibleReader({ passage }) {
-  console.log('PASSAGE', passage)
   return (
     <section
       className={styles.reader}

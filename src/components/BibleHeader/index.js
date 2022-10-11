@@ -18,17 +18,15 @@ export default function BibleHeader({ input, onClick }) {
       <div>
         <button
           aria-details='select a book'
-          disabled={!book}
           onClick={() => onClick(BIBLE_STATE_KEYS.book)}
         >
-          {book}
+          {book || 'book'}
         </button>
         <button
           aria-details='select a chapter'
-          disabled={!chapter || !book}
           onClick={() => onClick(BIBLE_STATE_KEYS.chapter)}
         >
-          {chapter}
+          {chapter || 'chapter'}
         </button>
       </div>
     </header>
