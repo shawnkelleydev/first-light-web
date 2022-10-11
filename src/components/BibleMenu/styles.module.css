@@ -18,12 +18,11 @@
   flex-direction: column;
   margin: auto;
   overflow: auto;
-  padding: 24px;
   width: min(400px, 90vw);
   height: min(800px, 90vh);
 }
 
 .menu h3 {
-  margin: .5em 0;
+  margin: 0.5em 0;
   text-transform: capitalize;
 }

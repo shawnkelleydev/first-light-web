@@ -63,8 +63,6 @@ export const AppContextProvider = ({ children }) => {
     return () => abortController.abort()
   }, [state.bible.input])
 
-  console.log('CONTEXT:', state.bible.input.book, state.bible.input.chapter)
-
   return (
     <AppContext.Provider value={{ dispatch, state }}>
       {children}

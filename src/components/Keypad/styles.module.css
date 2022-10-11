@@ -1,9 +1,13 @@
 .keypad {
-  animation: slidedown .5s ease-in-out;
+  animation: slidedown 0.5s ease-in-out;
   display: grid;
   gap: 4px;
   grid-template-columns: repeat(auto-fit, 44px);
-  margin: 0 0 4px;
+  margin: 0 0 16px;
+}
+
+.keypad:last-child {
+  margin: 0;
 }
 
 .keypad[data-bibles] {

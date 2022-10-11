@@ -14,6 +14,7 @@ export default function BibleMenu({ input, onClick }) {
     for (let n = 1; n <= chapters; n++) {
       formattedList.push(n)
     }
+
     return formattedList
   }
 
@@ -28,8 +29,8 @@ export default function BibleMenu({ input, onClick }) {
     }
   }
 
-  const books = Object.keys(data)
-  const chapters = getChapters(data[book]?.length)
+  const books = [Object.keys(data[0]), Object.keys(data[1])]
+  const chapters = getChapters(data[0][book]?.length || data[1][book]?.length)
 
   if (book && chapter) return null
 
@@ -37,18 +38,22 @@ export default function BibleMenu({ input, onClick }) {
     <div className={styles.menu}>
       <div>
         <h3>{getHeaderText()}</h3>
-        <Keypad
-          list={!book ? books : chapters}
-          onClick={item =>
-            onClick(
-              !book ? BIBLE_STATE_KEYS.book : BIBLE_STATE_KEYS.chapter,
-              item
-            )
-          }
-          idCB={item =>
-            isNaN(item) ? item.replace(' ', '').slice(0, 3).toUpperCase() : item
-          }
-        />
+        {!book &&
+          books.map((testament, idx) => (
+            <Keypad
+              idCB={item => item.replace(' ', '').slice(0, 3).toUpperCase()}
+              key={idx}
+              list={testament}
+              onClick={item => onClick(BIBLE_STATE_KEYS.book, item)}
+            />
+          ))}
+        {book && !chapter && (
+          <Keypad
+            idCB={item => item}
+            list={chapters}
+            onClick={item => onClick(BIBLE_STATE_KEYS.chapter, item)}
+          />
+        )}
       </div>
     </div>
   )
