@@ -1,7 +1,7 @@
 .menu {
   align-items: center;
-  background: #000000b8;
-  backdrop-filter: blur(12px);
+  background: #131313bd;
+  backdrop-filter: blur(24px);
   display: flex;
   justify-content: center;
   margin: auto;

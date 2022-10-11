@@ -1,27 +1,69 @@
-import React, { createContext, useContext, useReducer } from 'react'
+import React, { createContext, useContext, useEffect, useReducer } from 'react'
+import { getBibleData } from 'services/bible'
+import { BIBLE_STATE_KEYS } from 'utils/constants/bible'
 
 const AppContext = createContext()
 
 export const AppContextProvider = ({ children }) => {
   const initialState = {
     error: '',
-    authorization: { blocked: false, isAuthorized: false },
+    auth: {
+      attempts: 0,
+      authorized: true,
+      blocked: false,
+      input: '',
+    },
     bible: {
-      api: {},
       input: {},
+      passage: null,
+      query: null,
       verse: null,
     },
   }
 
   const [state, dispatch] = useReducer((state, action) => {
-    const { parentKey, key, value } = action
-    switch (true) {
-      case !!parentKey:
-        return { ...state, [parentKey]: { ...state.parentKey, [key]: value } }
+    const { type, key, value } = action
+    switch (type) {
+      case 'SET_AUTH':
+        return { ...state, auth: { ...state.auth, [key]: value } }
+      case 'SET_BIBLE_DATA':
+        return {
+          ...state,
+          bible: { ...state.bible, [key]: value },
+        }
+      case 'SET_BIBLE_INPUT':
+        return {
+          ...state,
+          bible: {
+            ...state.bible,
+            input: { ...state.bible.input, [key]: value },
+          },
+        }
       default:
         return { ...state, [key]: value }
     }
   }, initialState)
+
+  useEffect(() => {
+    const abortController = new AbortController()
+    const { book, chapter } = state.bible.input
+
+    const getPassage = async () => {
+      const data = await getBibleData(`${book} ${chapter}`, abortController)
+      dispatch({
+        type: 'SET_BIBLE_DATA',
+        key: BIBLE_STATE_KEYS.passage,
+        value: data,
+      })
+    }
+
+    console.log('CONTEXT EFFECT', book, chapter)
+    book && chapter && getPassage()
+
+    return () => abortController.abort()
+  }, [state.bible.input])
+
+  console.log('CONTEXT:', state.bible.input.book, state.bible.input.chapter)
 
   return (
     <AppContext.Provider value={{ dispatch, state }}>

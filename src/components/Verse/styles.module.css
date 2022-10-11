@@ -1,9 +1,9 @@
 .verse {
   align-items: center;
-  background: #000000b8;
+  background: #131313bd;
+  backdrop-filter: blur(24px);
   border-radius: 8px;
   box-shadow: 0 .5px 0 1px #4646467a;
-  backdrop-filter: blur(12px);
   display: flex;
   flex-direction: column;
   gap: 1em;
@@ -21,10 +21,6 @@
   gap: 4px;
 }
 
-.verse > span {
-  line-height: 1.2em;
-}
-
 .verse button {
   background: none;
   border: 1px solid #888;
@@ -34,16 +30,18 @@
   transition: .1s ease-out;
 }
 
-.verse p[class='s'], .verse p[class='ms'] {
+.verse[data-loading='true'], .verse button:disabled {
+  color: #888;
+}
+
+.verse > span * {
   display: none;
 }
 
-.verse span[class='v'] {
-  color: #888;
-  margin: 0 4px;
-  font-size: .8em;
-  position: relative;
-  bottom: .3em;
+.verse > span p:not(:last-child), 
+.verse > span p:not(:last-child) *:not(b,sup,*:empty) {
+  display: block;
+  line-height: 1.3;
 }
 
 .verse cite {

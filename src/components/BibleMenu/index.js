@@ -1,58 +1,24 @@
 import { BIBLE_STATE_KEYS } from 'utils/constants/bible'
-import { setBible, setBook } from 'utils/bible'
+import data from 'utils/data/bible.json'
 
 import Keypad from 'components/Keypad'
 
 import styles from './styles.module.css'
 
-const Keypads = ({ bible, bibles, book, chapter, dispatch, loading }) => {
-  switch (true) {
-    case !bible:
-      return (
-        <Keypad
-          data-bibles
-          disabled={loading}
-          idCB={item => item.abbreviationLocal}
-          list={bibles}
-          onClick={bible => setBible(bibles, bible.id, dispatch)}
-        />
-      )
-    case !book:
-      return (
-        <Keypad
-          disabled={loading}
-          idCB={item => item.id}
-          list={bible?.books}
-          onClick={book => setBook(bible, book.id, dispatch)}
-        />
-      )
-    case !chapter:
-      return (
-        <Keypad
-          disabled={loading}
-          idCB={item => item.id.replace(`${item.bookId}.`, '')}
-          list={book.chapters}
-          onClick={chapter =>
-            dispatch({
-              parentKey: BIBLE_STATE_KEYS.input,
-              key: BIBLE_STATE_KEYS.chapter,
-              value: chapter,
-            })
-          }
-        />
-      )
-    default:
-      return null
-  }
-}
+export default function BibleMenu({ input, onClick }) {
+  const { book, chapter } = input
+  console.log('BIBLE MENU:', book, chapter)
 
-export default function BibleMenu({ dispatch, state }) {
-  const { bible, book, chapter } = state.input
+  const getChapters = chapters => {
+    const formattedList = []
+    for (let n = 1; n <= chapters; n++) {
+      formattedList.push(n)
+    }
+    return formattedList
+  }
 
   const getHeaderText = () => {
     switch (true) {
-      case !bible:
-        return BIBLE_STATE_KEYS.bible
       case !book:
         return BIBLE_STATE_KEYS.book
       case !chapter:
@@ -62,21 +28,26 @@ export default function BibleMenu({ dispatch, state }) {
     }
   }
 
-  if (bible && book && chapter) return null
+  const books = Object.keys(data)
+  const chapters = getChapters(data[book]?.length)
+
+  if (book && chapter) return null
 
   return (
     <div className={styles.menu}>
       <div>
         <h3>{getHeaderText()}</h3>
-        <Keypads
-          bible={state.input.bible}
-          bibles={state.api.bibles}
-          book={state.input.book}
-          chapter={state.input.chapter}
-          dispatch={dispatch}
-          inputMethods={state.input.methods}
-          loading={state.loading}
-          state={state}
+        <Keypad
+          list={!book ? books : chapters}
+          onClick={item =>
+            onClick(
+              !book ? BIBLE_STATE_KEYS.book : BIBLE_STATE_KEYS.chapter,
+              item
+            )
+          }
+          idCB={item =>
+            isNaN(item) ? item.replace(' ', '').slice(0, 3).toUpperCase() : item
+          }
         />
       </div>
     </div>

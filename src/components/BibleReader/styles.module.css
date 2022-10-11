@@ -28,6 +28,7 @@
 .reader cite {
   color: #aaa;
   display: flex;
+  flex-direction: column;
   font-size: .8em;
   justify-content: center;
   text-align: center;

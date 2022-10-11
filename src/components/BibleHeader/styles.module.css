@@ -13,10 +13,6 @@
   z-index: 1;
 }
 
-.header[data-scroll-down='true'] {
-  translate: 0 -100%;
-}
-
 .header h2 button {
   background: none;
   border: none;
@@ -44,4 +40,10 @@
 
 .header div button:not(:disabled):hover {
   background: var(--color-hover);
+}
+
+@media (max-width: 500px) {
+  .header[data-scroll-down='true'] {
+    translate: 0 -100%;
+  }
 }

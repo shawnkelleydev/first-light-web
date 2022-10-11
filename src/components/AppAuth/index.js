@@ -1,18 +1,30 @@
 import Auth from './Auth'
 
-import useAuthData from 'data/useAuthData'
+import { STATE_KEYS } from 'utils/constants/global'
+import { useAppContext } from 'context'
 
 export default function AppAuth({ children }) {
-  const [dispatch, handleSubmit, state] = useAuthData()
-  const { blocked, error, input, isAuthorized } = state
+  const { dispatch, state } = useAppContext()
+  const { authorized, blocked, input } = state.auth
 
-  if (isAuthorized) return children
+  const handleSubmit = e => {
+    e.preventDefault()
+    console.log(input)
+  }
+
+  if (authorized) return children
   return (
     <Auth
       blocked={blocked}
-      error={error}
+      error={state.error}
       input={input}
-      onChange={e => dispatch({ type: 'SET_INPUT', input: e.target.value })}
+      onChange={e => {
+        dispatch({
+          type: 'SET_AUTH',
+          key: STATE_KEYS.input,
+          value: e.target.value,
+        })
+      }}
       onSubmit={handleSubmit}
     />
   )

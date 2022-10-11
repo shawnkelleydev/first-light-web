@@ -16,7 +16,7 @@ export default function useAuthData() {
 
   const reducer = (state, action) => {
     switch (action.type) {
-      case 'SET_INPUT':
+      case 'SET_BIBLE_INPUT':
         return { ...state, input: action.input }
       case 'AUTHORIZE':
         return { ...initialState, isAuthorized: true }
